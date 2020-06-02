@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02d1b7ac-e249-4025-8951-e0ee5618818d" name="Default Changelist" comment="" />
+    <list default="true" id="02d1b7ac-e249-4025-8951-e0ee5618818d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +12,31 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1591074201" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="wrap-in-flask-application" />
+                    <option name="lastUsedInstant" value="1591074200" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="ProjectId" id="1XGREcCGmIQ1xymFarWOHGFKkJo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -55,6 +83,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="448" y="153" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1590990008685">
@@ -70,5 +99,8 @@
     </state>
     <state x="277" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1590989941908" />
     <state x="2197" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1590990494873" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/farspeech_SOS$app.coverage" NAME="app Coverage Results" MODIFIED="1591069201997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
