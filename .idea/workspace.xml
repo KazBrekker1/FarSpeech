@@ -10,7 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02d1b7ac-e249-4025-8951-e0ee5618818d" name="Default Changelist" comment="Added The .gitignore with added files">
+    <list default="true" id="02d1b7ac-e249-4025-8951-e0ee5618818d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -65,7 +65,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -191,15 +191,15 @@
       <screen x="1920" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591072399679" />
-    <state x="2197" y="62" key="SettingsEditor" timestamp="1591072707688">
-      <screen x="1920" y="0" width="1536" height="834" />
+    <state x="277" y="62" key="SettingsEditor" timestamp="1591074605791">
+      <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state x="277" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1590989941908" />
+    <state x="277" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591074605791" />
     <state x="2197" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591072707688" />
-    <state x="2281" y="134" key="Vcs.Push.Dialog.v2" timestamp="1591073512737">
-      <screen x="1920" y="0" width="1536" height="834" />
+    <state x="361" y="134" key="Vcs.Push.Dialog.v2" timestamp="1591074508150">
+      <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591006615834" />
+    <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591074508150" />
     <state x="2281" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591073512737" />
     <state x="2456" y="48" key="git4idea.branch.GitSmartOperationDialog" timestamp="1591069104107">
       <screen x="1920" y="0" width="1536" height="834" />
