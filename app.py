@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return send_file('templates/index.html')  # Tried rendering the file and other Flask Methods and the Error Still persists
+    return send_file('templates/index.html')
 
 
 if __name__ == '__main__':
