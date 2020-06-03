@@ -11,7 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02d1b7ac-e249-4025-8951-e0ee5618818d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="wrap-in-flask-application" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -124,7 +124,7 @@
       <workItem from="1591042024421" duration="1932000" />
       <workItem from="1591154486470" duration="8000" />
       <workItem from="1591157720599" duration="374000" />
-      <workItem from="1591158132980" duration="1464000" />
+      <workItem from="1591158132980" duration="1980000" />
     </task>
     <task id="LOCAL-00001" summary="Adding The Initial FarSpeech File">
       <created>1591006601714</created>
@@ -154,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591159546314</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updated gitignore">
+      <created>1591159686107</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1591159686107</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,9 +183,9 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Adding The Initial FarSpeech File" />
     <MESSAGE value="Added The .gitignore with added files" />
-    <MESSAGE value="updated gitignore" />
     <MESSAGE value="Added Structure for Heroku deployment test&#10;+Procfile&#10;+requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Structure for Heroku deployment test&#10;+Procfile&#10;+requirements.txt" />
+    <MESSAGE value="updated gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2143" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591047755026">
@@ -189,11 +196,11 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="448" y="153" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1590990008685" />
-    <state x="2315" y="0" key="CommitChangelistDialog2" timestamp="1591159544513">
+    <state x="2315" y="0" key="CommitChangelistDialog2" timestamp="1591159684997">
       <screen x="1920" y="0" width="1536" height="834" />
     </state>
     <state x="395" y="0" key="CommitChangelistDialog2/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591074730098" />
-    <state x="2315" y="0" key="CommitChangelistDialog2/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591159544513" />
+    <state x="2315" y="0" key="CommitChangelistDialog2/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591159684997" />
     <state x="2468" y="158" key="FileChooserDialogImpl" timestamp="1590792422145">
       <screen x="1920" y="0" width="1536" height="834" />
     </state>
@@ -223,11 +230,11 @@
     </state>
     <state x="277" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591074605791" />
     <state x="2197" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591072707688" />
-    <state x="2281" y="134" key="Vcs.Push.Dialog.v2" timestamp="1591159550712">
+    <state x="2281" y="134" key="Vcs.Push.Dialog.v2" timestamp="1591159687949">
       <screen x="1920" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591074734447" />
-    <state x="2281" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591159550712" />
+    <state x="2281" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591159687949" />
     <state x="2456" y="48" key="git4idea.branch.GitSmartOperationDialog" timestamp="1591069104107">
       <screen x="1920" y="0" width="1536" height="834" />
     </state>
