@@ -75,7 +75,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="farspeech-SOS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -88,7 +88,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\youss\Downloads\farspeech-SOS\farspeech-SOS\app.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\youss\Downloads\farspeech-SOS\farspeech-SOS\__init__.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -99,7 +99,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.app" />
+        <item itemvalue="Python.__init__" />
       </list>
     </recent_temporary>
   </component>
