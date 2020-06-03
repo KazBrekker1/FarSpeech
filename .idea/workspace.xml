@@ -1,110 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="02d1b7ac-e249-4025-8951-e0ee5618818d" name="Default Changelist" comment="proc">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="02d1b7ac-e249-4025-8951-e0ee5618818d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="wrap-in-flask-application" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitToolBoxStore">
-    <option name="recentBranches">
-      <RecentBranches>
-        <option name="branchesForRepo">
-          <list>
-            <RecentBranchesForRepo>
-              <option name="branches">
-                <list>
-                  <RecentBranch>
-                    <option name="branchName" value="wrap-in-flask-application" />
-                    <option name="lastUsedInstant" value="1591069107" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1591069090" />
-                  </RecentBranch>
-                </list>
-              </option>
-              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
-            </RecentBranchesForRepo>
-          </list>
-        </option>
-      </RecentBranches>
-    </option>
-  </component>
   <component name="ProjectId" id="1XGREcCGmIQ1xymFarWOHGFKkJo" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\youss\Downloads\farspeech-SOS\farspeech-SOS" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\youss\Downloads\farspeech-SOS\farspeech-SOS" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="farspeech-SOS" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\youss\Downloads\farspeech-SOS\farspeech-SOS\app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.app" />
-      </list>
-    </recent_temporary>
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="SvnConfiguration">
     <configuration>C:\Users\youss\AppData\Roaming\Subversion</configuration>
@@ -121,77 +38,8 @@
       <workItem from="1590989940116" duration="22000" />
       <workItem from="1590990417226" duration="69000" />
       <workItem from="1590990551754" duration="82000" />
-      <workItem from="1591006077689" duration="1405000" />
-      <workItem from="1591037849461" duration="752000" />
-      <workItem from="1591042024421" duration="1932000" />
-      <workItem from="1591154486470" duration="8000" />
-      <workItem from="1591157720599" duration="374000" />
-      <workItem from="1591158132980" duration="4272000" />
+      <workItem from="1591006077689" duration="262000" />
     </task>
-    <task id="LOCAL-00001" summary="Adding The Initial FarSpeech File">
-      <created>1591006601714</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1591006601714</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Added The .gitignore with added files">
-      <created>1591073501092</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1591073501092</updated>
-    </task>
-    <task id="LOCAL-00003" summary="updated gitignore">
-      <created>1591074731644</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1591074731644</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added Structure for Heroku deployment test&#10;+Procfile&#10;+requirements.txt">
-      <created>1591159546314</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1591159546314</updated>
-    </task>
-    <task id="LOCAL-00005" summary="updated gitignore">
-      <created>1591159686107</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1591159686107</updated>
-    </task>
-    <task id="LOCAL-00006" summary="added runtime.txt">
-      <created>1591160188523</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1591160188523</updated>
-    </task>
-    <task id="LOCAL-00007" summary="finalizing">
-      <created>1591160554462</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1591160554462</updated>
-    </task>
-    <task id="LOCAL-00008" summary="finalizing">
-      <created>1591160829250</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1591160829250</updated>
-    </task>
-    <task id="LOCAL-00009" summary="proc">
-      <created>1591161829266</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1591161829266</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,77 +55,20 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Adding The Initial FarSpeech File" />
-    <MESSAGE value="Added The .gitignore with added files" />
-    <MESSAGE value="Added Structure for Heroku deployment test&#10;+Procfile&#10;+requirements.txt" />
-    <MESSAGE value="updated gitignore" />
-    <MESSAGE value="added runtime.txt" />
-    <MESSAGE value="finalizing" />
-    <MESSAGE value="proc" />
-    <option name="LAST_COMMIT_MESSAGE" value="proc" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2143" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591047755026">
-      <screen x="1920" y="0" width="1536" height="834" />
-    </state>
-    <state x="2143" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591047755026" />
     <state x="448" y="153" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1590990008685">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="448" y="153" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1590990008685" />
-    <state x="2315" y="0" key="CommitChangelistDialog2" timestamp="1591162299263">
-      <screen x="1920" y="0" width="1536" height="834" />
-    </state>
-    <state x="395" y="0" key="CommitChangelistDialog2/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591074730098" />
-    <state x="2315" y="0" key="CommitChangelistDialog2/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591162299263" />
-    <state x="2045" y="66" key="DiffContextDialog" timestamp="1591161824905">
-      <screen x="1920" y="0" width="1536" height="834" />
-    </state>
-    <state x="2045" y="66" key="DiffContextDialog/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591161824905" />
     <state x="2468" y="158" key="FileChooserDialogImpl" timestamp="1590792422145">
       <screen x="1920" y="0" width="1536" height="834" />
     </state>
     <state x="2468" y="158" key="FileChooserDialogImpl/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1590792422145" />
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1591160861916">
+    <state x="2197" y="62" key="SettingsEditor" timestamp="1590990494873">
       <screen x="1920" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591075042406" />
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591160861916" />
-    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1591160861916">
-      <screen x="1920" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591075042406" />
-    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591160861916" />
-    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1591160861916">
-      <screen x="1920" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591075042406" />
-    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591160861916" />
-    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1591160861916">
-      <screen x="1920" y="0" width="1536" height="834" />
-    </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591075042406" />
-    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591160861916" />
-    <state x="277" y="62" key="SettingsEditor" timestamp="1591074605791">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="277" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591074605791" />
-    <state x="2197" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591072707688" />
-    <state x="2281" y="134" key="Vcs.Push.Dialog.v2" timestamp="1591160831574">
-      <screen x="1920" y="0" width="1536" height="834" />
-    </state>
-    <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1591074734447" />
-    <state x="2281" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591160831574" />
-    <state x="2456" y="48" key="git4idea.branch.GitSmartOperationDialog" timestamp="1591069104107">
-      <screen x="1920" y="0" width="1536" height="834" />
-    </state>
-    <state x="2456" y="48" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1591069104107" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/farspeech_SOS$app.coverage" NAME="__init__ Coverage Results" MODIFIED="1591160840812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <state x="277" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@0.0.1536.832" timestamp="1590989941908" />
+    <state x="2197" y="62" key="SettingsEditor/0.0.1536.832/1920.0.1536.834@1920.0.1536.834" timestamp="1590990494873" />
   </component>
 </project>
