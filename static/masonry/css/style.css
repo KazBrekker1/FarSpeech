@@ -191,7 +191,6 @@
   height: 95%;
   direction: rtl;
   margin-top: 10px;
-  overflow-y: scroll;
   line-height: 1.20455;
   background-color: transparent;
   width: 100%;
@@ -203,7 +202,6 @@
   color: white;
   height: 95%;
   margin-top: 10px;
-  overflow-y: scroll;
   line-height: 1.20455;
   background-color: transparent;
   width: 100%;
