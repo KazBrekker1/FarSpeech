@@ -91,8 +91,6 @@ var dictate = new Dictate({
         var textBeforeCaret = $("#trans").val().slice(0, startPosition);
         doUpper = (textBeforeCaret.length === 0) || /\. *$/.test(textBeforeCaret) || /\n *$/.test(textBeforeCaret);
         doPrependSpace = (textBeforeCaret.length > 0) && !(/\n *$/.test(textBeforeCaret));
-        $('#processingModal').modal('show');
-        spin();
     },
     onEndOfSpeech: function () {
         __message("END OF SPEECH");
@@ -112,7 +110,6 @@ var dictate = new Dictate({
         $("#buttonCancel").prop("disabled", true);
         $("#resetButton").prop("disabled", false);
         $('.buttonsContainer').removeClass('live');
-        //$('#feedbackModal').modal('show');
     },
     onServerStatus: function (json) {
         __serverStatus(json.num_workers_available);
@@ -191,7 +188,7 @@ var dictate = new Dictate({
             }, {});
 
             /* Now that `counts` has our object, we can log it. */
-            console.log(counts);
+            console.log({"Counts: " : counts});
             return counts;
 
         }());
@@ -215,7 +212,6 @@ var dictate = new Dictate({
 
         $("#main-dialect").text(DialectLabels[dialectWithHighestFreq]);
         $("#main-dialect-prob").text(Math.ceil(probabilityOfMainDialect) + "%");
-        // $("#main-dialect-diff").text(Math.ceil(probabilityOfMainDialect - parseFloat(sortable[1][1]) * 100) + "%");
 
 
         $("#" + sortable[0][0].toLowerCase()).css("width", parseFloat(sortable[0][1]) * 100 + "%");
