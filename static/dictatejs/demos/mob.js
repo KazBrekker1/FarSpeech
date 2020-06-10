@@ -374,7 +374,7 @@ function __updateFarasaBlocks(text) {
             console.log("segmenter error");
         })
 
-    var ner = $.post('https://qatsdemo.cloudapp.net/farasa/requestExecuter.php', {
+    var ner = $.post('http://qatsdemo.cloudapp.net/farasa/requestExecuter.php', {
         query: text, task: 5
     })
         .done(function (data) {
