@@ -188,7 +188,7 @@ var dictate = new Dictate({
             }, {});
 
             /* Now that `counts` has our object, we can log it. */
-            console.log(counts);
+            console.log({"Counts: " : counts});
             return counts;
 
         }());
@@ -212,7 +212,6 @@ var dictate = new Dictate({
 
         $("#main-dialect").text(DialectLabels[dialectWithHighestFreq]);
         $("#main-dialect-prob").text(Math.ceil(probabilityOfMainDialect) + "%");
-        // $("#main-dialect-diff").text(Math.ceil(probabilityOfMainDialect - parseFloat(sortable[1][1]) * 100) + "%");
 
 
         $("#" + sortable[0][0].toLowerCase()).css("width", parseFloat(sortable[0][1]) * 100 + "%");
