@@ -91,8 +91,6 @@ var dictate = new Dictate({
         var textBeforeCaret = $("#trans").val().slice(0, startPosition);
         doUpper = (textBeforeCaret.length === 0) || /\. *$/.test(textBeforeCaret) || /\n *$/.test(textBeforeCaret);
         doPrependSpace = (textBeforeCaret.length > 0) && !(/\n *$/.test(textBeforeCaret));
-        $('#processingModal').modal('show');
-        spin();
     },
     onEndOfSpeech: function () {
         __message("END OF SPEECH");
@@ -112,7 +110,6 @@ var dictate = new Dictate({
         $("#buttonCancel").prop("disabled", true);
         $("#resetButton").prop("disabled", false);
         $('.buttonsContainer').removeClass('live');
-        //$('#feedbackModal').modal('show');
     },
     onServerStatus: function (json) {
         __serverStatus(json.num_workers_available);
@@ -377,7 +374,7 @@ function __updateFarasaBlocks(text) {
             console.log("segmenter error");
         })
 
-    var ner = $.post('http://qatsdemo.cloudapp.net/farasa/requestExecuter.php', {
+    var ner = $.post('https://qatsdemo.cloudapp.net/farasa/requestExecuter.php', {
         query: text, task: 5
     })
         .done(function (data) {
