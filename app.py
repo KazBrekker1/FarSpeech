@@ -1,5 +1,7 @@
 from flask import Flask, send_file
 from flask_socketio import SocketIO, emit
+import urllib.parse
+import urllib.request
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'farspeech12345'
@@ -11,30 +13,26 @@ def hello_world():
     return send_file('templates/index.html')
 
 
-@socketio.on('json')
-def handle_json(json):
-    print('received json: ' + str(json))
-
-
 @socketio.on('connect')
 def test_connect():
     print("It Connected")
 
-""" 
-EVENT HANDLER
-handels: my event (from OnResult in the front end)
-"""
-@socketio.on('my event')
-def trial(data):
-    print(data)
-    """ 
-    EVENT EMMITTER
-    event name : event 2 
-    """
-    socketio.emit('event 2', {
-        "data": "Emmited data From Backend"
-    })
 
+url = "http://qatsdemo.cloudapp.net/farasa/requestExecuter.php"
+
+
+@socketio.on("Input NER Event")
+def processing(data):
+    queryvalues = data
+    data = urllib.parse.urlencode(queryvalues)
+    data = data.encode('utf-8')  # data should be bytes
+    req = urllib.request.Request(url, data)
+    with urllib.request.urlopen(req) as response:
+        the_page = response.read()
+        # print(the_page.decode('utf-8'))
+        socketio.emit('Output NER Event', {
+            "data": the_page.decode('utf-8')
+        })
 
 if __name__ == '__main__':
     socketio.run(app)

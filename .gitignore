@@ -213,3 +213,4 @@ fabric.properties
 .vscode/
 .idea/
 fs-flask/
+testing.py

@@ -166,12 +166,11 @@ var dictate = new Dictate({
     $("#trans").prop("selectionStart", endPosition);
   },
   onResults: function (hypos) {
-
     // EVENT EMMITER
     // event name : my event
-    socket.emit("my event", {
-      data: "Emmited Data From FrontEnd",
-    });
+    // socket.emit("my event", {
+    //   data: "Emmited Data From FrontEnd",
+    // });
 
     hypText = prettyfyHyp(hypos[0].transcript, doUpper, doPrependSpace);
     val = $("#trans").val();
@@ -411,8 +410,6 @@ function __updateTranscript(text) {
 }
 
 function __updateFarasaBlocks(text) {
-  // $("#ner").text(text);
-
   var segmenter = $.post("https://farasa-api.qcri.org/msa/webapi/segmenter", {
     text: text,
   })
@@ -454,17 +451,15 @@ function __updateFarasaBlocks(text) {
       console.log("segmenter error");
     });
 
-  var ner = $.post("http://qatsdemo.cloudapp.net/farasa/requestExecuter.php", {
+  socket.emit("Input NER Event", {
     query: text,
     task: 5,
-  })
-    .done(function (data) {
-      // alert(data);
-      $("#ner").empty().append(data);
-    })
-    .fail(function () {
-      console.log("NER error");
-    });
+    normalized: "false",
+  });
+
+  socket.on("Output NER Event", (data) => {
+    $("#ner").empty().append(data.data);
+  });
 }
 
 // Public methods (called from the GUI)
@@ -548,6 +543,7 @@ $(document).ready(function () {
 
 // EVENT HANDLER
 // handels event 2 (comes from backend)
-socket.on("event 2", (data) => {
-  console.error(data);
-});
+// socket.on("event 2", (data) => {
+//   console.error(data);
+// }
+// );
