@@ -6,7 +6,7 @@ import urllib.request
 url = "http://qatsdemo.cloudapp.net/farasa/requestExecuter.php"
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'farspeech12345'
-socketio = SocketIO(app)
+socketio = SocketIO(app=app, cors_allowed_origins='*')
 
 
 @app.route('/')
