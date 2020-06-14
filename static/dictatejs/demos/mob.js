@@ -540,10 +540,3 @@ $(document).ready(function () {
     dictate.setServerStatus(servers[1]);
   });
 });
-
-// EVENT HANDLER
-// handels event 2 (comes from backend)
-// socket.on("event 2", (data) => {
-//   console.error(data);
-// }
-// );
