@@ -3,10 +3,10 @@ from flask_socketio import SocketIO, emit
 import urllib.parse
 import urllib.request
 
+url = "http://qatsdemo.cloudapp.net/farasa/requestExecuter.php"
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'farspeech12345'
-socketio = SocketIO(app, cors_allowed_origins=[
-                    'http://farspeech-flask.herokuapp.com/', 'https://farspeech-flask.herokuapp.com/'])
+socketio = SocketIO(app)
 
 
 @app.route('/')
@@ -19,9 +19,6 @@ def test_connect():
     print("It Connected")
 
 
-url = "http://qatsdemo.cloudapp.net/farasa/requestExecuter.php"
-
-
 @socketio.on("Input NER Event")
 def processing(data):
     queryvalues = data
@@ -30,7 +27,6 @@ def processing(data):
     req = urllib.request.Request(url, data)
     with urllib.request.urlopen(req) as response:
         the_page = response.read()
-        # print(the_page.decode('utf-8'))
         socketio.emit('Output NER Event', {
             "data": the_page.decode('utf-8')
         })

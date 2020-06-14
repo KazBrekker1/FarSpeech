@@ -94,7 +94,7 @@ function prettyfyHyp(text, doCapFirst, doPrependSpace) {
   text = text.replace(/ ?\n ?/g, "\n");
   return text;
 }
-var socket = io.connect("http://" + document.domain + ":" + location.port);
+var socket = io.connect("https://" + document.domain + ":" + location.port);
 var dictate = new Dictate({
   server: $("#servers").val().split("|")[0],
   serverStatus: $("#servers").val().split("|")[1],
