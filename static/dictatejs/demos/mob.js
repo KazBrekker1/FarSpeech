@@ -94,9 +94,6 @@ function prettyfyHyp(text, doCapFirst, doPrependSpace) {
   text = text.replace(/ ?\n ?/g, "\n");
   return text;
 }
-var socket = io.connect(
-  location.protocol + "//" + document.domain + ":" + location.port
-);
 var dictate = new Dictate({
   server: $("#servers").val().split("|")[0],
   serverStatus: $("#servers").val().split("|")[1],
@@ -168,12 +165,6 @@ var dictate = new Dictate({
     $("#trans").prop("selectionStart", endPosition);
   },
   onResults: function (hypos) {
-    // EVENT EMMITER
-    // event name : my event
-    // socket.emit("my event", {
-    //   data: "Emmited Data From FrontEnd",
-    // });
-
     hypText = prettyfyHyp(hypos[0].transcript, doUpper, doPrependSpace);
     val = $("#trans").val();
     $("#trans").val(
@@ -453,15 +444,38 @@ function __updateFarasaBlocks(text) {
       console.log("segmenter error");
     });
 
-  socket.emit("Input NER Event", {
-    query: text,
-    task: 5,
-    normalized: "false",
-  });
-
-  socket.on("Output NER Event", (data) => {
-    $("#ner").empty().append(data.data);
-  });
+  var ner = $.post("https://farasa-api.qcri.org/msa/webapi/ner", {
+    text: text,
+    //  task: 5
+  })
+    .done(function (data) {
+      let out = "";
+      data.forEach((text) => {
+        let flag = text.split("/")[1].slice(-3);
+        let content = [text.split("/")[0]];
+        switch (flag) {
+          case "LOC":
+            out += `<span class="text-danger"><strong> ${content} </strong></span>`;
+            break;
+          case "ORG":
+            out += `<span class="text-primary"><strong> ${content} </strong></span>`;
+            break;
+          case "ERS":
+            out += `<span class="text-success"><strong> ${content} </strong></span>`;
+            break;
+          case "O":
+            out += `<span><strong> ${content} </strong></span>`;
+            break;
+          default:
+            out += `<span><strong> ${content} </strong></span>`;
+            break;
+        }
+      });
+      $("#ner").empty().append(out);
+    })
+    .fail(function () {
+      console.log("NER error");
+    });
 }
 
 // Public methods (called from the GUI)
