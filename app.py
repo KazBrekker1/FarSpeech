@@ -1,6 +1,8 @@
 from flask import Flask, send_file
 
+url = "http://qatsdemo.cloudapp.net/farasa/requestExecuter.php"
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'farspeech12345'
 
 
 @app.route('/')
