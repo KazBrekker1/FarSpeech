@@ -1,4 +1,9 @@
+html,
+body {
+  height: 100%;
+}
 .grid-layout {
+  height: 100%;
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -111,6 +116,7 @@
   background-color: #2ec4b6 !important;
   text-align: start;
   max-height: 330px;
+  height: 100%;
 }
 .grid-item-7 {
   color: #000;
@@ -129,6 +135,7 @@
 .grid-item-8 {
   background-color: #264653 !important;
   max-height: 330px;
+  height: 100%;
 }
 .grid-item-9 {
   background-color: #efa9ae !important;
@@ -137,10 +144,12 @@
   background-color: #7fb285 !important;
   text-align: start;
   max-height: 330px;
+  height: 100%;
 }
 .grid-item-13 {
   background-color: #118c8b !important;
   max-height: 330px;
+  height: 100%;
 }
 .grid-item-14 {
   background-color: white !important;
@@ -186,7 +195,8 @@
 .textspace {
   font-family: "Scheherazade", serif;
   font-size: 40px !important;
-  overflow-y: scroll;
+  overflow: hidden;
+  overflow-y: auto;
   color: white;
   height: 95%;
   direction: rtl;

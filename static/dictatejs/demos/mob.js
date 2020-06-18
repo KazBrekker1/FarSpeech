@@ -186,6 +186,13 @@ var dictate = new Dictate({
     document.getElementById("seg").scrollTop = document.getElementById(
       "seg"
     ).scrollHeight;
+    document.getElementById("diac").scrollTop = document.getElementById(
+      "diac"
+    ).scrollHeight;
+
+    document.getElementById("pos").scrollTop = document.getElementById(
+      "pos"
+    ).scrollHeight;
 
     var sortable = [];
     for (var dialect in hypos[1]) {
