@@ -74,6 +74,7 @@ $mapcontainer.mapael({
         "so": {attrs: {fill: "#bbb"}, attrsHover: {fill: "#a4a4a4"}},
         "xs": {attrs: {fill: "#bbb"}, attrsHover: {fill: "#a4a4a4"}},
         "dj": {attrs: {fill: "#bbb"}, attrsHover: {fill: "#a4a4a4"}},
+        "mr": {attrs: {fill: "#bbb"}, attrsHover: {fill: "#a4a4a4"}},
         "hm": {attrs: {fill: "#bbb"}, attrsHover: {fill: "#a4a4a4"}}
     }
 });
