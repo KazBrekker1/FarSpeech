@@ -166,13 +166,6 @@ var dictate = new Dictate({
 		$(".buttonsContainer").removeClass("live");
 	},
 	onServerStatus: function (json) {
-		__serverStatus(json.num_workers_available);
-		$("#serverStatusBar").toggleClass(
-			"highlight",
-			json.num_workers_available == 0
-		);
-		// If there are no workers and we are currently not connected
-		// then disable the Start/Stop button.
 		if (json.num_workers_available == 0 && !isConnected) {
 			$("#buttonToggleListening").prop("disabled", true);
 		} else {
@@ -232,29 +225,29 @@ var dictate = new Dictate({
 
 		var dialectFreq = (function () {
 			/* Below is a regular expression that finds alphanumeric characters
-               Next is a string that could easily be replaced with a reference to a form control
-               Lastly, we have an array that will hold any words matching our pattern */
+							 Next is a string that could easily be replaced with a reference to a form control
+							 Lastly, we have an array that will hold any words matching our pattern */
 			// var pattern = /\w+/g,
 			//     string = "I I am am am yes yes.",
 			//     matchedWords = string.match( pattern );
 
 			/* The Array.prototype.reduce method assists us in producing a single value from an
-               array. In this case, we're going to use it to output an object with results. */
+							 array. In this case, we're going to use it to output an object with results. */
 			var counts = dialectHistory.reduce(function (stats, word) {
 				/* `stats` is the object that we'll be building up over time.
-                   `word` is each individual entry in the `dialectHistory` array */
+									 `word` is each individual entry in the `dialectHistory` array */
 				if (stats.hasOwnProperty(word)) {
 					/* `stats` already has an entry for the current `word`.
-                       As a result, let's increment the count for that `word`. */
+											 As a result, let's increment the count for that `word`. */
 					stats[word] = stats[word] + 1;
 				} else {
 					/* `stats` does not yet have an entry for the current `word`.
-                       As a result, let's add a new entry, and set count to 1. */
+											 As a result, let's add a new entry, and set count to 1. */
 					stats[word] = 1;
 				}
 
 				/* Because we are building up `stats` over numerous iterations,
-                   we need to return it for the next pass to modify it. */
+									 we need to return it for the next pass to modify it. */
 				return stats;
 			}, {});
 
@@ -456,7 +449,6 @@ var dictate = new Dictate({
 						},
 					};
 				}
-				// block of code to be executed if the condition1 is false and condition2 is false
 			}
 		});
 		$mapcontainer.trigger("update", [
@@ -469,7 +461,6 @@ var dictate = new Dictate({
 	onError: function (code, data) {
 		dictate.cancel();
 		__error(code, data);
-		// TODO: show error in the GUI
 	},
 	onEvent: function (code, data) {
 		__message(code, data);
@@ -485,10 +476,6 @@ function __error(code, data) {
 	console.log("ERR: " + code + ": " + (data || ""));
 }
 
-function __serverStatus(msg) {
-	serverStatusBar.innerHTML = msg;
-}
-
 function __updateTranscript(text) {
 	$("#trans").val(text);
 }
@@ -498,7 +485,6 @@ function __updateFarasaBlocks(text) {
 		text: text,
 	})
 		.done(function (data) {
-			//alert(data.output);
 			$("#seg").empty().append(data.segtext.join(" "));
 		})
 		.fail(function () {
@@ -510,9 +496,7 @@ function __updateFarasaBlocks(text) {
 		{ text: text }
 	)
 		.done(function (data) {
-			//alert(data.output);
 			$("#diac").empty().append(data.output);
-			// $("#farasa-result").css("background-color", "#ffffff");
 		})
 		.fail(function () {
 			console.log("diacritizer error");
@@ -525,7 +509,6 @@ function __updateFarasaBlocks(text) {
 		text: text,
 	})
 		.done(function (data) {
-			//alert(data.output);
 			data.forEach((value, index, array) => {
 				array[index] = value.POS;
 			});
@@ -537,7 +520,6 @@ function __updateFarasaBlocks(text) {
 
 	var ner = $.post("https://farasa-api.qcri.org/msa/webapi/ner", {
 		text: text,
-		//  task: 5
 	})
 		.done(function (data) {
 			let out = "";
