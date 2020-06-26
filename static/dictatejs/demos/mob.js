@@ -7,22 +7,22 @@
 //  - tt: simple structure for managing the list of hypotheses
 //  - dictate: dictate object with control methods 'init', 'startListening', ...
 //       and event callbacks onResults, onError, ...
-var isConnected = false;
+let isConnected = false;
 
-var tt = new Transcription();
+let tt = new Transcription();
 
-var startPosition = 0;
-var endPosition = 0;
-var doUpper = false;
-var doPrependSpace = true;
+let startPosition = 0;
+let endPosition = 0;
+let doUpper = false;
+let doPrependSpace = true;
 
-var MIN_VOL = -100;
-var MAX_VOL = -50;
-var dialectHistory = [];
+let MIN_VOL = -100;
+let MAX_VOL = -50;
+let dialectHistory = [];
 
-var updatedOptions = { areas: {} };
+let updatedOptions = { areas: {} };
 
-var arabCountries = [
+let arabCountries = [
 	"xs",
 	"dj",
 	"so",
@@ -50,7 +50,7 @@ var arabCountries = [
 	"dj",
 ];
 
-var countriesOfDialect = {
+let countriesOfDialect = {
 	ALG: ["dz"],
 	EGY: ["eg"],
 	IRA: ["iq"],
@@ -69,7 +69,7 @@ var countriesOfDialect = {
 	UAE: ["ae"],
 	YEM: ["ye"],
 };
-var DialectLabels = {
+let DialectLabels = {
 	ALG: "Algeria",
 	EGY: "Egypt",
 	IRA: "Iraq",
@@ -102,7 +102,7 @@ function prettyfyHyp(text, doCapFirst, doPrependSpace) {
 	if (doPrependSpace) {
 		text = " ";
 	}
-	doCapitalizeNext = false;
+	let doCapitalizeNext = false;
 	tokens.map(function (token) {
 		if (text.trim().length > 0) {
 			text = text + " ";
@@ -119,7 +119,7 @@ function prettyfyHyp(text, doCapFirst, doPrependSpace) {
 	text = text.replace(/ ?\n ?/g, "\n");
 	return text;
 }
-var dictate = new Dictate({
+let dictate = new Dictate({
 	server: $("#servers").val().split("|")[0],
 	serverStatus: $("#servers").val().split("|")[1],
 	referenceHandler:
@@ -138,7 +138,7 @@ var dictate = new Dictate({
 		$("#resetButton").prop("disabled", true);
 		startPosition = $("#trans").prop("selectionStart");
 		endPosition = startPosition;
-		var textBeforeCaret = $("#trans").val().slice(0, startPosition);
+		let textBeforeCaret = $("#trans").val().slice(0, startPosition);
 		doUpper =
 			textBeforeCaret.length === 0 ||
 			/\. *$/.test(textBeforeCaret) ||
@@ -212,8 +212,8 @@ var dictate = new Dictate({
 			"pos"
 		).scrollHeight;
 
-		var sortable = [];
-		for (var dialect in hypos[1]) {
+		let sortable = [];
+		for (let dialect in hypos[1]) {
 			sortable.push([dialect, hypos[1][dialect]]);
 		}
 
@@ -223,7 +223,7 @@ var dictate = new Dictate({
 
 		dialectHistory.push(sortable[0][0]);
 
-		var dialectFreq = (function () {
+		let dialectFreq = (function () {
 			/* Below is a regular expression that finds alphanumeric characters
 							 Next is a string that could easily be replaced with a reference to a form control
 							 Lastly, we have an array that will hold any words matching our pattern */
@@ -233,7 +233,7 @@ var dictate = new Dictate({
 
 			/* The Array.prototype.reduce method assists us in producing a single value from an
 							 array. In this case, we're going to use it to output an object with results. */
-			var counts = dialectHistory.reduce(function (stats, word) {
+			let counts = dialectHistory.reduce(function (stats, word) {
 				/* `stats` is the object that we'll be building up over time.
 									 `word` is each individual entry in the `dialectHistory` array */
 				if (stats.hasOwnProperty(word)) {
@@ -256,8 +256,8 @@ var dictate = new Dictate({
 			return counts;
 		})();
 
-		var max_freq = 0;
-		var dialectWithHighestFreq = "";
+		let max_freq = 0;
+		let dialectWithHighestFreq = "";
 		Object.keys(dialectFreq).forEach(function (key, index) {
 			console.log(key, dialectFreq[key]);
 			if (dialectFreq[key] > max_freq) {
@@ -269,7 +269,7 @@ var dictate = new Dictate({
 			// index: the ordinal position of the key within the object
 		});
 
-		var probabilityOfMainDialect = (max_freq / dialectHistory.length) * 100;
+		let probabilityOfMainDialect = (max_freq / dialectHistory.length) * 100;
 
 		console.log(
 			"The main dialect is mostly: " +
@@ -441,7 +441,7 @@ var dictate = new Dictate({
 					},
 				};
 			} else {
-				var isArab = arabCountries.includes(key);
+				let isArab = arabCountries.includes(key);
 				if (isArab) {
 					updatedOptions.areas[key] = {
 						attrs: {
@@ -481,7 +481,7 @@ function __updateTranscript(text) {
 }
 
 function __updateFarasaBlocks(text) {
-	var segmenter = $.post("https://farasa-api.qcri.org/msa/webapi/segmenter", {
+	let segmenter = $.post("https://farasa-api.qcri.org/msa/webapi/segmenter", {
 		text: text,
 	})
 		.done(function (data) {
@@ -491,7 +491,7 @@ function __updateFarasaBlocks(text) {
 			console.log("segmenter error");
 		});
 
-	var diacritizer = $.post(
+	let diacritizer = $.post(
 		"https://farasa-api.qcri.org/msa/webapi/diacritizeV2",
 		{ text: text }
 	)
@@ -505,7 +505,7 @@ function __updateFarasaBlocks(text) {
 			console.log("finished");
 		});
 
-	var segmenter = $.post("https://farasa-api.qcri.org/msa/webapi/pos", {
+	let pos = $.post("https://farasa-api.qcri.org/msa/webapi/pos", {
 		text: text,
 	})
 		.done(function (data) {
@@ -515,10 +515,10 @@ function __updateFarasaBlocks(text) {
 			$("#pos").empty().append(data.join(" "));
 		})
 		.fail(function () {
-			console.log("segmenter error");
+			console.log("POS error");
 		});
 
-	var ner = $.post("https://farasa-api.qcri.org/msa/webapi/ner", {
+	let ner = $.post("https://farasa-api.qcri.org/msa/webapi/ner", {
 		text: text,
 	})
 		.done(function (data) {
@@ -573,7 +573,7 @@ function clearTranscription() {
 }
 
 function clearCache() {
-	var dialectHistory = [];
+	let dialectHistory = [];
 	clearTranscription();
 	$("#main-dialect").text("--");
 	$("#main-dialect-prob").text("0%");
@@ -581,7 +581,7 @@ function clearCache() {
 		key,
 		index
 	) {
-		var isArab = arabCountries.includes(key);
+		let isArab = arabCountries.includes(key);
 		if (isArab) {
 			updatedOptions.areas[key] = {
 				attrs: {
@@ -647,7 +647,7 @@ $(document).ready(function () {
 
 	$("#servers").change(function () {
 		dictate.cancel();
-		var servers = $("#servers").val().split("|");
+		let servers = $("#servers").val().split("|");
 		dictate.setServer(servers[0]);
 		dictate.setServerStatus(servers[1]);
 	});

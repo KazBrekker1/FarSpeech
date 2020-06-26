@@ -65,7 +65,6 @@
 .farspeech-btn:hover::before {
 	height: 180%;
 }
-
 .grid-item-11 {
 	position: relative;
 	overflow: hidden;
@@ -92,7 +91,7 @@
 	height: 100%;
 }
 .grid-item-10 {
-	background-color: #7fb285 !important;
+	background-color: #273028 !important;
 	text-align: start;
 	max-height: 330px;
 	height: 100%;

@@ -1,0 +1,68 @@
+{% extends 'index.html' %} {% block container %}
+<input id="servers" name="servers" type="hidden"
+	value="wss://liveqats.qcri.org:8888/client/ws/speech|wss://liveqats.qcri.org:8888/client/ws/status" />
+
+<div class="grid-layout">
+	<button type="button" class="btn btn-secondary micButton grid-item grid-item-1 farspeech-btn"
+		id="buttonToggleListening" onclick="toggleListening();" title="Starts/stops listening for speech.">
+		Press to Speak
+	</button>
+	<div class="grid-item grid-item-2" style="background-color: #b04f60; text-align: center;">
+		<span class="value stopwatch h2 stat-item" style="margin-top: 38%; display: block; font-size: 30px;">00:00:00</span>
+	</div>
+	<button type="button" class="btn btn-secondary micButton grid-item grid-item-3 farspeech-btn" onclick="clearCache();">
+		Clear cached data
+	</button>
+	<button type="button" class="btn btn-secondary micButton grid-item grid-item-4 farspeech-btn" onclick="init();">
+		Re-initialize Microphone
+	</button>
+
+	<div class="grid-item span-12 grid-item-14">
+		<a href="https://www.qcri.org/" target="_blank">
+			<img src="../static/masonry/qcri-hbku.svg" style="margin-top: 3%;" /></a>
+	</div>
+	<div class="grid-item grid-item-11">
+		<a href="https://www.qcri.org/" target="_blank">
+			<img src="../static/masonry/qcri-old.jpg" style="width: 100%;" /></a>
+	</div>
+
+	<div class="grid-item grid-item-21">
+		<a href="http://qatsdemo.cloudapp.net/farasa/" target="_blank"><img src="../static/masonry/farasa.png"
+				style="width: 100%; margin: 5px;" />
+		</a>
+	</div>
+
+	<div class="grid-item span-2 grid-item-5" hidden>
+		Arabic Speech Recognition Output
+		<textarea id="trans"></textarea>
+	</div>
+
+	<div class="grid-item span-2 grid-item-6">
+		Named-Entity Recognition
+		<div id="ner" class="textspace"></div>
+	</div>
+
+	<div class="grid-item span-2 grid-item-10">
+		Word Segmentation
+		<div id="seg" class="textspace"></div>
+	</div>
+
+	<div class="grid-item span-2 grid-item-13">
+		Text Diacritization
+		<div id="diac" class="textspace"></div>
+	</div>
+
+	<div class="grid-item span-2 grid-item-8">
+		Part-Of-Speech Tags
+		<div id="pos" class="textspace-en"></div>
+	</div>
+
+	<div class="grid-item span-2 grid-item-23 mapcontainer">
+		<div class="map" style="width: 100%;">Arab world map goes here</div>
+
+		<div class="map-text">
+			You are probably from this part of the Arab world.
+		</div>
+	</div>
+</div>
+{% endblock %}
