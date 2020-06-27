@@ -129,8 +129,9 @@ let dictate = new Dictate({
 		isConnected = true;
 		__message("READY FOR SPEECH");
 		$(".buttonsContainer").addClass("live");
+		$(".micButton").removeClass("btn-outline-danger");
+		$(".micButton").addClass("btn-danger");
 		$("#buttonToggleListening").html("Stop");
-		$("#buttonToggleListening").addClass("farspeech-btn-pressed");
 		stopwatch.start();
 		$("#buttonToggleListening").addClass("highlight");
 		$("#buttonToggleListening").prop("disabled", false);
@@ -151,19 +152,17 @@ let dictate = new Dictate({
 		$("#buttonToggleListening").html("Stopping...");
 		stopwatch.stop();
 		$("#buttonToggleListening").prop("disabled", true);
-		$(".buttonsContainer").removeClass("live");
 	},
 	onEndOfSession: function () {
 		isConnected = false;
 		__message("END OF SESSION");
 		$("#buttonToggleListening").html("Speak");
-		$("#buttonToggleListening").removeClass("farspeech-btn-pressed");
+		$(".micButton").removeClass("btn-danger");
+		$(".micButton").addClass("btn-outline-danger");
 		stopwatch.stop();
-		$("#buttonToggleListening").removeClass("highlight");
 		$("#buttonToggleListening").prop("disabled", false);
 		$("#buttonCancel").prop("disabled", true);
 		$("#resetButton").prop("disabled", false);
-		$(".buttonsContainer").removeClass("live");
 	},
 	onServerStatus: function (json) {
 		if (json.num_workers_available == 0 && !isConnected) {
@@ -195,22 +194,10 @@ let dictate = new Dictate({
 		doUpper = /\. *$/.test(hypText) || /\n *$/.test(hypText);
 		doPrependSpace = hypText.length > 0 && !/\n *$/.test(hypText);
 
-		document.getElementById("trans").scrollTop = document.getElementById(
-			"trans"
-		).scrollHeight;
-		document.getElementById("ner").scrollTop = document.getElementById(
-			"ner"
-		).scrollHeight;
-		document.getElementById("seg").scrollTop = document.getElementById(
-			"seg"
-		).scrollHeight;
-		document.getElementById("diac").scrollTop = document.getElementById(
-			"diac"
-		).scrollHeight;
-
-		document.getElementById("pos").scrollTop = document.getElementById(
-			"pos"
-		).scrollHeight;
+		$(".name-entity").scrollTop($(".name-entity").height());
+		$(".segmenter").scrollTop($(".segmenter").height());
+		$(".diacritization").scrollTop($(".diacritization").height());
+		$(".parts-of-speach").scrollTop($(".parts-of-speach").height());
 
 		let sortable = [];
 		for (let dialect in hypos[1]) {

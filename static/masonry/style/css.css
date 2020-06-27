@@ -1,0 +1,91 @@
+.grid-layout {
+  height: 100%;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 10% 90%;
+      grid-template-rows: 10% 90%;
+}
+
+.grid-layout .main {
+  grid-column: 1/-1;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 50%;
+  gap: 10px;
+  height: 100%;
+  width: 99%;
+}
+
+.grid-layout .main .output {
+  display: -ms-grid;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  gap: 5px;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  -ms-grid-rows: 50% 50%;
+      grid-template-rows: 50% 50%;
+}
+
+.grid-layout .main .output div {
+  max-height: 310px;
+}
+
+.grid-layout .main .mapcontainer {
+  width: 100%;
+  height: 100%;
+}
+
+.grid-layout .upper {
+  grid-column: 1/-1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.grid-layout .upper .timer {
+  width: 30%;
+  margin: auto;
+}
+
+.grid-layout .upper .timer span {
+  font-size: xx-large;
+  padding: 1rem;
+}
+
+.grid-layout .upper .tools {
+  width: 30%;
+}
+
+.grid-layout .upper .start-btn {
+  width: 30%;
+  font-size: larger;
+}
+
+.grid-layout footer {
+  grid-column: 1/-1;
+}
+
+.seg,
+.diac,
+.ner,
+.pos {
+  direction: rtl;
+}
+
+.pos {
+  direction: ltr;
+}
+/*# sourceMappingURL=css.css.map */

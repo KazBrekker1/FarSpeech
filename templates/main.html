@@ -3,20 +3,25 @@
 	value="wss://liveqats.qcri.org:8888/client/ws/speech|wss://liveqats.qcri.org:8888/client/ws/status" />
 
 <div class="grid-layout">
-	<button type="button" class="btn btn-secondary micButton grid-item grid-item-1 farspeech-btn"
-		id="buttonToggleListening" onclick="toggleListening();" title="Starts/stops listening for speech.">
+	<button type="button" class="micButton grid-item grid-item-1 farspeech-btn" id="buttonToggleListening"
+		onclick="toggleListening();" title="Starts/stops listening for speech.">
 		Press to Speak
 	</button>
+
+
 	<div class="grid-item grid-item-2" style="background-color: #b04f60; text-align: center;">
-		<span class="value stopwatch h2 stat-item" style="margin-top: 38%; display: block; font-size: 30px;">00:00:00</span>
+		<span class="value stopwatch h2 stat-item" style="margin-top: 12%; display: block; font-size: 30px;">00:00:00</span>
 	</div>
-	<button type="button" class="btn btn-secondary micButton grid-item grid-item-3 farspeech-btn" onclick="clearCache();">
+
+	<button type="button" class="micButton grid-item grid-item-3 farspeech-btn" onclick="clearCache();">
 		Clear cached data
 	</button>
-	<button type="button" class="btn btn-secondary micButton grid-item grid-item-4 farspeech-btn" onclick="init();">
+
+	<button type="button" class="micButton grid-item grid-item-4 farspeech-btn" onclick="init();">
 		Re-initialize Microphone
 	</button>
-
+	
+<!-- 
 	<div class="grid-item span-12 grid-item-14">
 		<a href="https://www.qcri.org/" target="_blank">
 			<img src="../static/masonry/qcri-hbku.svg" style="margin-top: 3%;" /></a>
@@ -30,7 +35,7 @@
 		<a href="http://qatsdemo.cloudapp.net/farasa/" target="_blank"><img src="../static/masonry/farasa.png"
 				style="width: 100%; margin: 5px;" />
 		</a>
-	</div>
+	</div> -->
 
 	<div class="grid-item span-2 grid-item-5" hidden>
 		Arabic Speech Recognition Output
