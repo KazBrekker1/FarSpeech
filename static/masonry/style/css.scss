@@ -17,11 +17,11 @@
 			display: grid;
 			height: 100%;
 			width: 100%;
-			gap: 5px;
+			gap: 3px;
 			grid-template-columns: 50% 50%;
 			grid-template-rows: 50% 50%;
 			div {
-				max-height: 310px;
+				max-height: 307px;
 			}
 		}
 		.mapcontainer {
@@ -56,8 +56,7 @@
 }
 .seg,
 .diac,
-.ner,
-.pos {
+.ner {
 	direction: rtl;
 }
 .pos {

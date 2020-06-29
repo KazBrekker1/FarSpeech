@@ -10,7 +10,12 @@
 let isConnected = false;
 
 let tt = new Transcription();
-
+let sessionText = {
+	Raw: "",
+	Segmented: "",
+	Diactrized: "",
+	partsOfSpeach: "",
+};
 let startPosition = 0;
 let endPosition = 0;
 let doUpper = false;
@@ -187,6 +192,11 @@ let dictate = new Dictate({
 		$("#trans").val(
 			val.slice(0, startPosition) + hypText + val.slice(endPosition)
 		);
+
+		// Contains Raw Arabic Text
+		// console.log(val);
+		sessionText.Raw = val;
+
 		__updateFarasaBlocks($("#trans").val());
 		startPosition = startPosition + hypText.length;
 		endPosition = startPosition;
@@ -473,6 +483,9 @@ function __updateFarasaBlocks(text) {
 	})
 		.done(function (data) {
 			$("#seg").empty().append(data.segtext.join(" "));
+			// Contains Segmenter Output
+			// console.log(data.segtext.join(" "));
+			sessionText.Segmented = data.segtext.join(" ");
 		})
 		.fail(function () {
 			console.log("segmenter error");
@@ -484,6 +497,9 @@ function __updateFarasaBlocks(text) {
 	)
 		.done(function (data) {
 			$("#diac").empty().append(data.output);
+			// Contains Diactrizer Output
+			// console.log(data.output);
+			sessionText.Diactrized = data.output;
 		})
 		.fail(function () {
 			console.log("diacritizer error");
@@ -500,6 +516,9 @@ function __updateFarasaBlocks(text) {
 				array[index] = value.POS;
 			});
 			$("#pos").empty().append(data.join(" "));
+			// Containes Parts Of Speach Data
+			// console.log(data.join(" "));
+			sessionText.partsOfSpeach = data.join(" ");
 		})
 		.fail(function () {
 			console.log("POS error");
@@ -621,6 +640,16 @@ function clearCache() {
 	$("#percent-syr").text(0);
 	$("#percent-uae").text(0);
 	$("#percent-yem").text(0);
+}
+
+function saveSessionHandler() {
+	saveSession(sessionText);
+}
+
+function saveSession(text) {
+	let value = JSON.stringify(text, null, 2);
+	let blob = new Blob([value], { type: "text/plain;charset=utf-8" });
+	saveAs(blob, "Text.txt");
 }
 
 function init() {

@@ -13,15 +13,18 @@
         <span class="value stopwatch stat-item">00:00:00</span>
       </div>
     </div>
-    <button class="tools btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-      aria-expanded="false">
-      <strong>Utilities</strong>
-    </button>
-    <ul class="dropdown-menu p-3">
-      <li><button class="dropdown-item" type="button" onclick="clearCache();">Clear Cache</button></li>
-      <li><button class="dropdown-item" type="button" onclick="init();">Re-Initialize</button></li>
-      <li><button class="dropdown-item" type="button" disabled>Save Text</button></li>
-    </ul>
+
+    <div class="tools btn-group dropdown">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+        aria-expanded="false"><strong>Utilities</strong>
+      </button>
+      <ul class="dropdown-menu p-3">
+        <li><button class="dropdown-item" type="button" onclick="clearCache();">Clear Cache</button></li>
+        <li><button class="dropdown-item" type="button" onclick="init();">Re-Initialize Microphone</button></li>
+        <li><button class="dropdown-item" type="button" onclick="saveSessionHandler();">Save Text</button></li>
+      </ul>
+    </div>
+
   </div>
   <div class="main">
     <div class="output">
