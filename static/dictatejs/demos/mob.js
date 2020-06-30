@@ -138,11 +138,9 @@ let dictate = new Dictate({
 		$(".micButton").addClass("btn-danger");
 		$("#buttonToggleListening").html("Stop");
 		stopwatch.start();
-		$("#buttonToggleListening").addClass("highlight");
 		$("#buttonToggleListening").prop("disabled", false);
 		$("#buttonCancel").prop("disabled", false);
 		$("#resetButton").prop("disabled", true);
-		startPosition = $("#trans").prop("selectionStart");
 		endPosition = startPosition;
 		let textBeforeCaret = $("#trans").val().slice(0, startPosition);
 		doUpper =
