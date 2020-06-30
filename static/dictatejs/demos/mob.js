@@ -576,9 +576,19 @@ function clearTranscription() {
 	$("#trans").prop("selectionEnd", 0);
 }
 
+function clearFarasaBlocks() {
+	let blocks = ["#ner", "#diac", "#seg", "#pos"];
+	blocks.forEach((b) => {
+		$(b).empty();
+		$(b).prop("selectionStart", 0);
+		$(b).prop("selectionEnd", 0);
+	});
+}
+
 function clearCache() {
 	let dialectHistory = [];
 	clearTranscription();
+	clearFarasaBlocks();
 	$("#main-dialect").text("--");
 	$("#main-dialect-prob").text("0%");
 	Object.keys($mapcontainer.data("mapael").areas).forEach(function (
@@ -656,9 +666,17 @@ function init() {
 	clearTranscription();
 }
 
+function screenCheck() {
+	if ($(window).width() < 600) {
+		// console.log("This Is Phone");
+		$(".tools").removeClass("dropdown");
+		$(".tools").addClass("dropup");
+	}
+}
+
 $(document).ready(function () {
 	dictate.init();
-
+	screenCheck();
 	$("#servers").change(function () {
 		dictate.cancel();
 		let servers = $("#servers").val().split("|");

@@ -292,7 +292,7 @@
 			var ws = new WebSocket(url);
 
 			ws.onmessage = function (e) {
-				var data = e.data;
+				var data = e.data; //Raw Data To Be tested On
 				config.onEvent(MSG_WEB_SOCKET, data);
 				if (data instanceof Object && !(data instanceof Blob)) {
 					config.onError(
@@ -306,7 +306,7 @@
 					if (res.status == 0) {
 						if (res.result) {
 							if (res.result.final) {
-								config.onResults(res.result.hypotheses);
+								config.onResults(res.result.hypotheses); // Pass The data Here into the Mob And Test On It
 							} else {
 								config.onPartialResults(res.result.hypotheses);
 							}

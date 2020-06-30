@@ -5,7 +5,7 @@
   <div class="upper">
     <button class="btn btn-outline-danger start-btn micButton" id="buttonToggleListening" onclick="toggleListening();"
       title="Starts/stops listening for speech.">
-      Press To Speak
+      Speak
     </button>
 
     <div class="timer">
@@ -22,6 +22,7 @@
         <li><button class="dropdown-item" type="button" onclick="clearCache();">Clear Cache</button></li>
         <li><button class="dropdown-item" type="button" onclick="init();">Re-Initialize Microphone</button></li>
         <li><button class="dropdown-item" type="button" onclick="saveSessionHandler();">Save Text</button></li>
+        <li><button class="dropdown-item" type="button" onclick="darkifyToggle();" disabled>Dark Theme</button></li>
       </ul>
     </div>
 
@@ -49,7 +50,6 @@
           <p class="card-text seg" id="seg"></p>
         </div>
       </div>
-
 
       <div class="card bg-secondary text-white overflow-auto">
         <div class="card-header font-weight-bold">
