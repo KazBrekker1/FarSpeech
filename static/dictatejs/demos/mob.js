@@ -180,6 +180,7 @@ let dictate = new Dictate({
 		$("#trans").val(
 			val.slice(0, startPosition) + hypText + val.slice(endPosition)
 		);
+		// console.log(mapData);
 		__updateFarasaBlocks($("#trans").val());
 		endPosition = startPosition + hypText.length;
 		$("#trans").prop("selectionStart", endPosition);
@@ -190,6 +191,7 @@ let dictate = new Dictate({
 		$("#trans").val(
 			val.slice(0, startPosition) + hypText + val.slice(endPosition)
 		);
+		// console.log(mapData);
 
 		// Contains Raw Arabic Text
 		// console.log(val);
@@ -458,7 +460,7 @@ let dictate = new Dictate({
 		__error(code, data);
 	},
 	onEvent: function (code, data) {
-		__message(code, data);
+		// __message(code, data);
 	},
 });
 

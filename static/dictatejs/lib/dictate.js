@@ -241,7 +241,8 @@
 			recorder = new Recorder(input, { workerPath: config.recorderWorkerPath });
 			config.onEvent(MSG_INIT_RECORDER, "Recorder initialized");
 		}
-
+		var blobx;
+		var mapData;
 		function socketSend(item) {
 			if (ws) {
 				var state = ws.readyState;
@@ -250,6 +251,16 @@
 					if (item instanceof Blob) {
 						if (item.size > 0) {
 							ws.send(item);
+							console.log(item);
+							// blobx = item; //The audio blob to then pass it in onResult()
+							// mapData = $.post("https://dialectid.qcri.org/adi17api", {
+							// 	headers: {},
+							// 	data: {},
+							// 	files: blobx,
+							// 	verify: false,
+							// });
+							// console.log(mapData);
+
 							config.onEvent(
 								MSG_SEND,
 								"Send: blob: " + item.type + ", " + item.size
@@ -292,7 +303,7 @@
 			var ws = new WebSocket(url);
 
 			ws.onmessage = function (e) {
-				var data = e.data; //Raw Data To Be tested On
+				var data = e.data;
 				config.onEvent(MSG_WEB_SOCKET, data);
 				if (data instanceof Object && !(data instanceof Blob)) {
 					config.onError(
@@ -306,7 +317,9 @@
 					if (res.status == 0) {
 						if (res.result) {
 							if (res.result.final) {
-								config.onResults(res.result.hypotheses); // Pass The data Here into the Mob And Test On It
+								// console.log(data);
+
+								config.onResults(res.result.hypotheses); // Pass The data Here into the Mob.js And Test On It
 							} else {
 								config.onPartialResults(res.result.hypotheses);
 							}
