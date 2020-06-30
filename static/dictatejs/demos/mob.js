@@ -667,7 +667,7 @@ function init() {
 }
 
 function screenCheck() {
-	if ($(window).width() < 600) {
+	if ($(window).width() < 768) {
 		// console.log("This Is Phone");
 		$(".tools").removeClass("dropdown");
 		$(".tools").addClass("dropup");
