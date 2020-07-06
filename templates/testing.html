@@ -72,12 +72,22 @@
     </div>
 
     <div class="card bg-dark text-white rounded mapcontainer">
-      <div class="map card-img-top">Arab world map goes here</div>
+      <div class="map card-img-top">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
       <div class="card-body">
-        <p class="card-text">You are probably from this part of the Arab world.
+        <p class="card-text text-center">You are probably from this part of the Arab world.
         </p>
       </div>
     </div>
   </div>
 </div>
+<script>
+  var cntxt = '{{ context.Data | tojson }}';
+  // console.log(cntxt);
+</script>
 {% endblock %}

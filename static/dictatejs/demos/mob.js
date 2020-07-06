@@ -210,14 +210,21 @@ let dictate = new Dictate({
 		$(".parts-of-speach").scrollTop($(".parts-of-speach").height());
 
 		let sortable = [];
-		for (let dialect in hypos[1]) {
-			sortable.push([dialect, hypos[1][dialect]]);
+
+		let goal = JSON.parse(cntxt.slice(1, -1));
+
+		// console.log(goal);
+
+		for (let dialect in goal[0]["final_score"]) {
+			console.log([dialect, goal[0]["final_score"][dialect]]);
+			sortable.push([dialect, goal[0]["final_score"][dialect]]);
 		}
 
 		sortable.sort(function (a, b) {
 			return b[1] - a[1];
 		});
 
+		console.log(sortable[0][0]);
 		dialectHistory.push(sortable[0][0]);
 
 		let dialectFreq = (function () {
@@ -478,83 +485,80 @@ function __updateTranscript(text) {
 }
 
 function __updateFarasaBlocks(text) {
-	let segmenter = $.post("https://farasa-api.qcri.org/msa/webapi/segmenter", {
-		text: text,
-	})
-		.done(function (data) {
-			$("#seg").empty().append(data.segtext.join(" "));
-			// Contains Segmenter Output
-			// console.log(data.segtext.join(" "));
-			sessionText.Segmented = data.segtext.join(" ");
-		})
-		.fail(function () {
-			console.log("segmenter error");
-		});
-
-	let diacritizer = $.post(
-		"https://farasa-api.qcri.org/msa/webapi/diacritizeV2",
-		{ text: text }
-	)
-		.done(function (data) {
-			$("#diac").empty().append(data.output);
-			// Contains Diactrizer Output
-			// console.log(data.output);
-			sessionText.Diactrized = data.output;
-		})
-		.fail(function () {
-			console.log("diacritizer error");
-		})
-		.always(function () {
-			console.log("finished");
-		});
-
-	let pos = $.post("https://farasa-api.qcri.org/msa/webapi/pos", {
-		text: text,
-	})
-		.done(function (data) {
-			data.forEach((value, index, array) => {
-				array[index] = value.POS;
-			});
-			$("#pos").empty().append(data.join(" "));
-			// Containes Parts Of Speach Data
-			// console.log(data.join(" "));
-			sessionText.partsOfSpeach = data.join(" ");
-		})
-		.fail(function () {
-			console.log("POS error");
-		});
-
-	let ner = $.post("https://farasa-api.qcri.org/msa/webapi/ner", {
-		text: text,
-	})
-		.done(function (data) {
-			let out = "";
-			data.forEach((text) => {
-				let flag = text.split("/")[1].slice(-3);
-				let content = [text.split("/")[0]];
-				switch (flag) {
-					case "LOC":
-						out += `<span class="text-danger"><strong> ${content} </strong></span>`;
-						break;
-					case "ORG":
-						out += `<span class="text-primary"><strong> ${content} </strong></span>`;
-						break;
-					case "ERS":
-						out += `<span class="text-success"><strong> ${content} </strong></span>`;
-						break;
-					case "O":
-						out += `<span><strong> ${content} </strong></span>`;
-						break;
-					default:
-						out += `<span><strong> ${content} </strong></span>`;
-						break;
-				}
-			});
-			$("#ner").empty().append(out);
-		})
-		.fail(function () {
-			console.log("NER error");
-		});
+	// let segmenter = $.post("https://farasa-api.qcri.org/msa/webapi/segmenter", {
+	// 	text: text,
+	// })
+	// 	.done(function (data) {
+	// 		$("#seg").empty().append(data.segtext.join(" "));
+	// 		// Contains Segmenter Output
+	// 		// console.log(data.segtext.join(" "));
+	// 		sessionText.Segmented = data.segtext.join(" ");
+	// 	})
+	// 	.fail(function () {
+	// 		console.log("segmenter error");
+	// 	});
+	// let diacritizer = $.post(
+	// 	"https://farasa-api.qcri.org/msa/webapi/diacritizeV2",
+	// 	{ text: text }
+	// )
+	// 	.done(function (data) {
+	// 		$("#diac").empty().append(data.output);
+	// 		// Contains Diactrizer Output
+	// 		// console.log(data.output);
+	// 		sessionText.Diactrized = data.output;
+	// 	})
+	// 	.fail(function () {
+	// 		console.log("diacritizer error");
+	// 	})
+	// 	.always(function () {
+	// 		console.log("finished");
+	// 	});
+	// let pos = $.post("https://farasa-api.qcri.org/msa/webapi/pos", {
+	// 	text: text,
+	// })
+	// 	.done(function (data) {
+	// 		data.forEach((value, index, array) => {
+	// 			array[index] = value.POS;
+	// 		});
+	// 		$("#pos").empty().append(data.join(" "));
+	// 		// Containes Parts Of Speach Data
+	// 		// console.log(data.join(" "));
+	// 		sessionText.partsOfSpeach = data.join(" ");
+	// 	})
+	// 	.fail(function () {
+	// 		console.log("POS error");
+	// 	});
+	// let ner = $.post("https://farasa-api.qcri.org/msa/webapi/ner", {
+	// 	text: text,
+	// })
+	// 	.done(function (data) {
+	// 		let out = "";
+	// 		data.forEach((text) => {
+	// 			let flag = text.split("/")[1].slice(-3);
+	// 			let content = [text.split("/")[0]];
+	// 			switch (flag) {
+	// 				case "LOC":
+	// 					out += `<span class="text-danger"><strong> ${content} </strong></span>`;
+	// 					break;
+	// 				case "ORG":
+	// 					out += `<span class="text-primary"><strong> ${content} </strong></span>`;
+	// 					break;
+	// 				case "ERS":
+	// 					out += `<span class="text-success"><strong> ${content} </strong></span>`;
+	// 					break;
+	// 				case "O":
+	// 					out += `<span><strong> ${content} </strong></span>`;
+	// 					break;
+	// 				default:
+	// 					out += `<span><strong> ${content} </strong></span>`;
+	// 					break;
+	// 			}
+	// 		});
+	// 		$("#ner").empty().append(out);
+	// 	})
+	// 	.fail(function () {
+	// 		console.log("NER error");
+	// 	});
 }
 
 // Public methods (called from the GUI)
@@ -588,6 +592,9 @@ function clearFarasaBlocks() {
 }
 
 function clearCache() {
+	// let goal = cntxt.slice(1, -1);
+	// console.log(JSON.parse(goal));
+
 	let dialectHistory = [];
 	clearTranscription();
 	clearFarasaBlocks();
@@ -685,4 +692,8 @@ $(document).ready(function () {
 		dictate.setServer(servers[0]);
 		dictate.setServerStatus(servers[1]);
 	});
+	// console.log(JSON.parse(cntxt));
+	// cntxt[0] = "'";
+	// cntxt[cntxt.length - 1] = "'";
+	// console.log(cntxt);
 });

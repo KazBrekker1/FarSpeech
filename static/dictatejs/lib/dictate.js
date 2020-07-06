@@ -241,8 +241,6 @@
 			recorder = new Recorder(input, { workerPath: config.recorderWorkerPath });
 			config.onEvent(MSG_INIT_RECORDER, "Recorder initialized");
 		}
-		var blobx;
-		var mapData;
 		function socketSend(item) {
 			if (ws) {
 				var state = ws.readyState;
@@ -251,15 +249,6 @@
 					if (item instanceof Blob) {
 						if (item.size > 0) {
 							ws.send(item);
-							console.log(item);
-							// blobx = item; //The audio blob to then pass it in onResult()
-							// mapData = $.post("https://dialectid.qcri.org/adi17api", {
-							// 	headers: {},
-							// 	data: {},
-							// 	files: blobx,
-							// 	verify: false,
-							// });
-							// console.log(mapData);
 
 							config.onEvent(
 								MSG_SEND,
@@ -333,13 +322,11 @@
 				}
 			};
 
-			// var blobob;
 			// Start recording only if the socket becomes open
 			ws.onopen = function (e) {
 				intervalKey = setInterval(function () {
 					recorder.export16kMono(function (blob) {
 						socketSend(blob);
-						// blobob = blob;
 						recorder.clear();
 					}, "audio/x-raw");
 				}, config.interval);
