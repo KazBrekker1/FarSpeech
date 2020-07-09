@@ -245,7 +245,6 @@
 			if (ws) {
 				var state = ws.readyState;
 				if (state == 1) {
-					// If item is an audio blob
 					if (item instanceof Blob) {
 						if (item.size > 0) {
 							ws.send(item);
@@ -306,9 +305,7 @@
 					if (res.status == 0) {
 						if (res.result) {
 							if (res.result.final) {
-								// console.log(data);
-
-								config.onResults(res.result.hypotheses); // Pass The data Here into the Mob.js And Test On It
+								config.onResults(res.result.hypotheses);
 							} else {
 								config.onPartialResults(res.result.hypotheses);
 							}

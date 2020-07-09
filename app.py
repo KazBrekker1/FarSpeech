@@ -1,33 +1,46 @@
 import requests
 import os
 from flask import Flask, render_template
-import json
+from pathlib import Path
 
 app = Flask(__name__)
 url = "https://dialectid.qcri.org/adi17api"
 
+"""
+**Important:
+    . My Browser Downloads into ~/Downloads/voiceData 
+    . Change the filePath variable to be wherever your browser Downloads + / + voiceData
+"""
+filePath = f"{Path.home()}/Downloads/voiceData"
 
-@app.route('/')
-def hello_world():
+
+@app.route('/send-data/')
+def ADI_Stream():
+    """
+        Gets Called From The Front-End
+        Request : lastest voice.raw file containing Audio Blobs
+        Response : Json Containing every Dialect and Its Probability
+
+    """
     files = []
     payload = {}
     headers = {}
-    def send_recieve_data(i):
-        for file in os.listdir("C:/Users/youss/Downloads/voiceData"):
+
+    for file in os.listdir(filePath):
+        if ".raw" in file:
             files.append(
-                (f"file{i}", open(
-                    f"C:/Users/youss/Downloads/voiceData/{file}", 'rb'))
+                (f"file1", open(f"{filePath}/{file}", 'rb'))
             )
-            i += 1
-        response = requests.request(
-            "POST", url, headers=headers, data=payload, files=files,  verify=False)
-        # print(response.text.encode('utf8'))
-        data = response.text.encode('utf8').decode('utf8')
-        return data
-    return render_template('testing.html', context={
-        "Data": send_recieve_data(1)
-    })
+    response = requests.request(
+        "POST", url, headers=headers, data=payload, files=[files[-1]],  verify=False)  # Sends The Last File Added To The array( TD: Improve the Logic)
+    # Looks Redundant, But It's Required Since the Response is a byte literal (And It Works...)
+    return response.text.encode('utf8').decode('utf8')
+
+
+@app.route('/')
+def hello_world():
+    return render_template('main.html')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

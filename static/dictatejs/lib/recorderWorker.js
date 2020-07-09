@@ -233,7 +233,6 @@ function export16kMono(type) {
 	var audioBlob = new Blob([dataview], {
 		type: type,
 	});
-	// saveAs(audioBlob, "voice.raw");
 	this.postMessage(audioBlob);
 }
 

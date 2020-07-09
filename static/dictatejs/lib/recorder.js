@@ -1,6 +1,24 @@
 (function (window) {
 	var WORKER_PATH = "/static/dictatejs/lib/recorderWorker.js";
 
+	// The deprecated BlobBuilder's clone to accumilate the blobs (Stack Over Flow)
+	var MyBlobBuilder = function () {
+		this.parts = [];
+	};
+
+	MyBlobBuilder.prototype.append = function (part) {
+		this.parts.push(part);
+		this.blob = undefined; // Invalidate the blob
+	};
+
+	MyBlobBuilder.prototype.getBlob = function () {
+		if (!this.blob) {
+			this.blob = new Blob(this.parts, { type: "audio/x-raw" });
+		}
+		return this.blob;
+	};
+
+	var myBlobBuilder = new MyBlobBuilder(); // initiating the BlobBuilder's clone
 	var Recorder = function (source, cfg) {
 		var config = cfg || {};
 		var bufferLen = config.bufferLen || 4096;
@@ -89,15 +107,20 @@
 				type: type,
 			});
 		};
-
+		let i = 1; // initiating to count onmessage() ticks
+		let j = 0; // initiating to name downloaded files
 		worker.onmessage = function (e) {
-			// console.log(e);
 			var blob = e.data;
-			// console.log(blob);
-			let i = 0;
-			// saveAs(blob, "voice.raw");
-			// i++;
 			currCallback(blob);
+			myBlobBuilder.append(blob);
+			// Each "Tick" or call on this function is 200 +- 50ms (The Bigger The Blob the More Accurate The Predection -There is a limit-)
+			// After -30- Ticks, the Blob Gets Saved To Be Downloaded and Sent to the ADI's API
+			i++ % 30 === 0 ? saveBlobPack(myBlobBuilder.getBlob()) : null;
+		};
+		let saveBlobPack = (bP) => {
+			saveAs(bP, `voice${j++}.raw`);
+			// Receting the blobs accumilated in the BlobBuilder
+			myBlobBuilder.parts = [];
 		};
 
 		source.connect(this.node);
