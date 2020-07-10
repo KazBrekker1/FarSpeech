@@ -208,9 +208,9 @@ let dictate = new Dictate({
 
 		// This Calls a method in the backend to stream blobs into the ADI api
 		// Can Cause Error Initially Due to the absence of RAW Files to Send (Ignore the Error Caused in the dialect handleing loop below)
-		$.get("/send-data/").done((res) => {
-			console.log(res);
+		$.get("/audio-reciver/").done((res) => {
 			let goal = JSON.parse(res);
+			// console.log(goal);
 			updateMapAndList(goal);
 		});
 	},
@@ -281,7 +281,6 @@ function __updateFarasaBlocks(text) {
 			console.log("POS error");
 		});
 	// Commented Till Farasa's Server Problem Is Fixed
-
 	// let ner = $.post("https://farasa-api.qcri.org/msa/webapi/ner", {
 	// 	text: text,
 	// })

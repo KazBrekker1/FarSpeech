@@ -1,39 +1,27 @@
 import requests
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from pathlib import Path
 
 app = Flask(__name__)
 url = "https://dialectid.qcri.org/adi17api"
 
-"""
-**Important:
-    . My Browser Downloads into ~/Downloads/voiceData 
-    . Change the filePath variable to be wherever your browser Downloads + / + voiceData
-"""
-filePath = f"{Path.home()}/Downloads/voiceData"
 
-
-@app.route('/send-data/')
-def ADI_Stream():
-    """
-        Gets Called From The Front-End
-        Request : lastest voice.raw file containing Audio Blobs
-        Response : Json Containing every Dialect and Its Probability
-
-    """
+@app.route('/audio-reciver/', methods=['GET', 'POST'])
+def File_In():
+    # Ignore Error Produced due to 400 Bad Request: KeyError: "file"
+    file = request.files["file"]
     files = []
     payload = {}
     headers = {}
-
-    for file in os.listdir(filePath):
-        if ".raw" in file:
-            files.append(
-                (f"file1", open(f"{filePath}/{file}", 'rb'))
-            )
+    file.save(os.path.join("./audioData", "audio.raw"))
+    for file in os.listdir("./audioData"):
+        files.append(
+            (f"file1", open(f"./audioData/{file}", 'rb'))
+        )
     response = requests.request(
-        "POST", url, headers=headers, data=payload, files=[files[-1]],  verify=False)  # Sends The Last File Added To The array( TD: Improve the Logic)
-    # Looks Redundant, But It's Required Since the Response is a byte literal (And It Works...)
+        "POST", url, headers=headers, data=payload, files=[files[-1]],  verify=False)
+
     return response.text.encode('utf8').decode('utf8')
 
 
@@ -43,4 +31,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

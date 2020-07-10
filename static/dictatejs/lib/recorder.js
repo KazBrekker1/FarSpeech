@@ -118,7 +118,20 @@
 			i++ % 30 === 0 ? saveBlobPack(myBlobBuilder.getBlob()) : null;
 		};
 		let saveBlobPack = (bP) => {
-			saveAs(bP, `voice${j++}.raw`);
+			let fd = new FormData();
+			fd.append("file", bP, `voice${j++}.raw`);
+			// console.log(fd.get("audio"));
+			let testing = $.ajax({
+				type: "POST",
+				enctype: "multipart/form-data",
+				url: "/audio-reciver/",
+				data: fd,
+				processData: false,
+				contentType: false,
+				success: (data) => {
+					updateMapAndList(JSON.parse(data));
+				},
+			});
 			// Receting the blobs accumilated in the BlobBuilder
 			myBlobBuilder.parts = [];
 		};
