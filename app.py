@@ -16,9 +16,10 @@ def File_In():
     headers = {}
     file.save(os.path.join("./audioData", "audio.raw"))
     for file in os.listdir("./audioData"):
-        files.append(
-            (f"file1", open(f"./audioData/{file}", 'rb'))
-        )
+        if ".raw" in file:
+            files.append(
+                (f"file1", open(f"./audioData/{file}", 'rb'))
+            )
     response = requests.request(
         "POST", url, headers=headers, data=payload, files=[files[-1]],  verify=False)
 

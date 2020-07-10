@@ -215,5 +215,4 @@ fabric.properties
 .vscode/
 .idea/
 fsflask/
-audioData/*
 testing.py
