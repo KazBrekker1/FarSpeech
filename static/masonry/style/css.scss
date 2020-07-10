@@ -8,7 +8,7 @@
 		background-color: white;
 		position: sticky;
 		bottom: 0;
-		z-index: 99;
+		z-index: 100;
 		padding-top: 1rem;
 		padding-bottom: 1rem;
 		display: flex;
@@ -44,10 +44,11 @@
 }
 .toggleContainer {
 	position: absolute;
-	z-index: 100;
+	z-index: 99;
 }
 .diacList {
-	margin: 2rem auto 2rem auto;
+	width: 75%;
+	margin: 1rem auto 1rem auto;
 	ul {
 		margin: auto;
 	}
@@ -100,6 +101,7 @@
 				height: 100%;
 			}
 			.diacList {
+				width: 50%;
 				margin: 5rem auto 5rem auto;
 				ul {
 					margin: auto;
