@@ -1,4 +1,34 @@
-{% extends 'base.html' %} {% block container %}
+{% extends 'base.html' %}
+{% block container %}
+<!-- Button trigger modal -->
+{# <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#openingModal">
+  Launch demo modal
+</button> #}
+
+<!-- Modal -->
+<div class="modal fade" id="openingModal" tabindex="-1" aria-labelledby="openingModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-info text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="openingModalLabel">Information</h5>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-warning mb-2 rounded shadow">This App is targeting non-IOS devices
+            due to recording instabilities
+          </li>
+          <li class="list-group-item list-group-item-info rounded shadow">This Project's
+            <a href="https://github.com/KazBrekker1/FarSpeech">GitHub Page</a>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer border-info">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Grid Layout -->
 <div class="grid-layout">
   <input id="servers" name="servers" type="hidden"
     value="wss://liveqats.qcri.org:8888/client/ws/speech|wss://liveqats.qcri.org:8888/client/ws/status" />
