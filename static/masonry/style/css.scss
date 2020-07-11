@@ -51,9 +51,9 @@
 	margin: 1rem auto 1rem auto;
 	ul {
 		margin: auto;
-	}
-	ul li {
-		height: 5rem;
+		li {
+			height: 5rem;
+		}
 	}
 }
 .mapael .mapTooltip {
@@ -102,9 +102,17 @@
 			}
 			.diacList {
 				width: 50%;
-				margin: 5rem auto 5rem auto;
+				margin: 6rem auto auto auto;
 				ul {
 					margin: auto;
+					li {
+						margin: 0.5rem;
+						transition: ease 200ms;
+						border-radius: 0.25rem !important;
+						&:hover {
+							transform: scale(1.05);
+						}
+					}
 				}
 			}
 		}

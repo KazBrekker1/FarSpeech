@@ -216,3 +216,6 @@ fabric.properties
 .idea/
 fsflask/
 testing.py
+audioData/audio.raw
+static/masonry/style/css.css.map
+static/masonry/style/css.scss
