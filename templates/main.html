@@ -47,6 +47,12 @@
         <strong>Utilities</strong>
       </button>
       <ul class="dropdown-menu p-3">
+        <!-- <li>
+          <button class="align-items-center dropdown-item d-flex justify-content-between" disabled type="button">
+            Workers Available
+            <span class="badge bg-primary rounded-pill workers">?</span>
+          </button>
+        </li> -->
         <li>
           <button class="dropdown-item" type="button" onclick="clearCache();">
             Clear Cache
@@ -111,9 +117,9 @@
     </div>
 
     <div class="card bg-dark rounded mapcontainer">
-      <h1 class="buffer-text bg-warning text-danger rounded p-5 text-center shadow-lg">
-        Start/Keep Speaking for Results
-      </h1>
+      <h3 class="buffer-text bg-warning text-danger rounded p-4 text-center shadow-lg">
+        Start / Keep Speaking for Results
+      </h3>
       <!-- Toggler Div -->
       <div class="toggleContainer">
         <input class="toggle" type="checkbox" checked data-toggle="toggle" data-on="List" data-off="Map"
@@ -124,7 +130,7 @@
         <h4 class="text-center">Dialect Predection</h4>
       </div>
       <!-- Map Div -->
-      <div class="map card-img-top border-warning"></div>
+      <div class="map card-img-top"></div>
       <!-- List Div -->
       <div class="diacList">
         <ul class="list-group bg-dark shadow-lg">

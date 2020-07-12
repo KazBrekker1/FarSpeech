@@ -168,10 +168,12 @@ let dictate = new Dictate({
 		$("#resetButton").prop("disabled", false);
 	},
 	onServerStatus: function (json) {
+		// __serverStatus(json.num_workers_available);
 		if (json.num_workers_available == 0 && !isConnected) {
 			$("#buttonToggleListening").prop("disabled", true);
 		} else {
 			$("#buttonToggleListening").prop("disabled", false);
+			// $(".workers").val(json.num_workers_available);
 		}
 	},
 	onPartialResults: function (hypos) {
@@ -313,6 +315,10 @@ function __updateFarasaBlocks(text) {
 	// 		console.log("NER error");
 	// 	});
 }
+
+// function __serverStatus(msg) {
+// 	$(".workers").val(msg);
+// }
 
 // Public methods (called from the GUI)
 function toggleListening() {
@@ -593,7 +599,12 @@ let handleContainerView = async () => {
 
 // Handles the Buffer-Text's Visibility and the .mapcontainer's interactivity
 let bufferTextSwitch = (bool) => {
-	$(".mapcontainer").css({ "pointer-events": bool ? "none" : "all" });
+	$(".mapcontainer").css({
+		"pointer-events": bool ? "none" : "all",
+	});
+	$(".diacList").css({
+		opacity: bool ? 0.3 : 1,
+	});
 	$(".buffer-text").css({
 		opacity: bool ? 1 : 0,
 		"z-index": bool ? 10 : -1,

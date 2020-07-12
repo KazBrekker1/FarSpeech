@@ -49,6 +49,7 @@
 .diacList {
 	width: 75%;
 	margin: 1rem auto 1rem auto;
+	opacity: 0.3;
 	ul {
 		margin: auto;
 		li {
@@ -63,7 +64,7 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transition: ease-out 300ms;
+		transition: ease 500ms;
 		transform: translate(-50%, -50%);
 	}
 }
