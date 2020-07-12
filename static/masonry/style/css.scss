@@ -56,6 +56,17 @@
 		}
 	}
 }
+.mapcontainer {
+	pointer-events: none;
+	.buffer-text {
+		z-index: 10;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transition: ease-out 300ms;
+		transform: translate(-50%, -50%);
+	}
+}
 .mapael .mapTooltip {
 	position: absolute;
 	background-color: #fff;

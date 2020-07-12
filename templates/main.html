@@ -1,10 +1,5 @@
 {% extends 'base.html' %}
 {% block container %}
-<!-- Button trigger modal -->
-{# <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#openingModal">
-  Launch demo modal
-</button> #}
-
 <!-- Modal -->
 <div class="modal fade" id="openingModal" tabindex="-1" aria-labelledby="openingModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -116,13 +111,16 @@
     </div>
 
     <div class="card bg-dark rounded mapcontainer">
+      <h1 class="buffer-text bg-warning text-danger rounded p-5 text-center shadow-lg">
+        Keep Speaking for Results
+      </h1>
       <!-- Toggler Div -->
       <div class="toggleContainer">
         <input class="toggle" type="checkbox" checked data-toggle="toggle" data-on="List" data-off="Map"
           data-onstyle="warning" data-offstyle="secondary" onchange="handleContainerView()" />
       </div>
       <!-- Card's Text -->
-      <div class="card-body p-0 pt-2 text-white" style="flex: 0;">
+      <div class="card-body p-0 pt-2 text-white text-center" style="flex: 0;">
         <h4 class="text-center">Dialect Predection</h4>
       </div>
       <!-- Map Div -->

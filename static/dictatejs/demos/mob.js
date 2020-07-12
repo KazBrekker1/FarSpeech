@@ -349,6 +349,10 @@ function clearCache() {
 	let dialectHistory = [];
 	clearTranscription();
 	clearFarasaBlocks();
+
+	// Turns the buffer-text div on
+	bufferTextSwitch(true);
+
 	$(".perc-1")
 		.empty()
 		.append(
@@ -414,6 +418,9 @@ let updateMapAndList = (goal) => {
 	sortable.sort(function (a, b) {
 		return b[1] - a[1];
 	});
+
+	// Turns the buffer-text div off
+	bufferTextSwitch(false);
 
 	// List Updating
 	topX = sortable.slice(0, 4);
@@ -582,6 +589,15 @@ let handleContainerView = async () => {
 	$(".map").attr("hidden", hidden);
 	$(".diacList").attr("hidden", !hidden);
 	hidden = !hidden;
+};
+
+// Handles the Buffer-Text's Visibility and the .mapcontainer's interactivity
+let bufferTextSwitch = (bool) => {
+	$(".mapcontainer").css({ "pointer-events": bool ? "none" : "all" });
+	$(".buffer-text").css({
+		opacity: bool ? 1 : 0,
+		"z-index": bool ? 10 : -1,
+	});
 };
 
 $(document).ready(function () {
