@@ -168,12 +168,11 @@ let dictate = new Dictate({
 		$("#resetButton").prop("disabled", false);
 	},
 	onServerStatus: function (json) {
-		// __serverStatus(json.num_workers_available);
+		__serverStatus(json.num_workers_available);
 		if (json.num_workers_available == 0 && !isConnected) {
 			$("#buttonToggleListening").prop("disabled", true);
 		} else {
 			$("#buttonToggleListening").prop("disabled", false);
-			// $(".workers").val(json.num_workers_available);
 		}
 	},
 	onPartialResults: function (hypos) {
@@ -316,9 +315,9 @@ function __updateFarasaBlocks(text) {
 	// 	});
 }
 
-// function __serverStatus(msg) {
-// 	$(".workers").val(msg);
-// }
+function __serverStatus(msg) {
+	$("#serverWorkers").text(msg);
+}
 
 // Public methods (called from the GUI)
 function toggleListening() {
