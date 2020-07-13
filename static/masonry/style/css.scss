@@ -41,6 +41,11 @@
 	.pos {
 		direction: ltr;
 	}
+	.ner {
+		p {
+			font-size: 1rem !important;
+		}
+	}
 }
 .toggleContainer {
 	position: absolute;

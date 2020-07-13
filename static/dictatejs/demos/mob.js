@@ -281,6 +281,17 @@ function __updateFarasaBlocks(text) {
 		.fail(function () {
 			console.log("POS error");
 		});
+	let ner = $.post("http://qatsdemo.cloudapp.net/farasa/requestExecuter.php", {
+		query: text,
+		task: 5,
+	})
+		.done(function (data) {
+			$("#ner").empty().append(data);
+		})
+		.fail(function () {
+			console.log("NER error");
+		});
+
 	// Commented Till Farasa's Server Problem Is Fixed
 	// let ner = $.post("https://farasa-api.qcri.org/msa/webapi/ner", {
 	// 	text: text,
@@ -410,7 +421,7 @@ let saveSessionHandler = () => {
 let saveSession = (text) => {
 	let value = JSON.stringify(text, null, 2);
 	let blob = new Blob([value], { type: "text/plain;charset=utf-8" });
-	saveAs(blob, "Text.txt");
+	saveAs(blob, "Raw.txt");
 };
 
 // Updates The Map And The List
