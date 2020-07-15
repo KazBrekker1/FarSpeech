@@ -4,7 +4,8 @@ from flask import Flask, render_template, request
 from pathlib import Path
 
 app = Flask(__name__)
-url = "https://dialectid.qcri.org/adi17api"
+ADI_url = "https://dialectid.qcri.org/adi17api"
+NER_url = "http://qatsdemo.cloudapp.net/farasa/requestExecuter.php"
 
 
 @app.route('/audio-reciver/', methods=['GET', 'POST'])
@@ -21,9 +22,21 @@ def File_In():
                 (f"file1", open(f"./audioData/{file}", 'rb'))
             )
     response = requests.request(
-        "POST", url, headers=headers, data=payload, files=[files[-1]],  verify=False)
+        "POST", ADI_url, headers=headers, data=payload, files=[files[-1]],  verify=False)
 
     return response.text.encode('utf8').decode('utf8')
+
+
+@app.route('/ner-reciever/', methods=['GET', 'POST'])
+def name_entity_recognition():
+    payload = {
+        "query": request.values['text'],
+        "task": 5
+    }
+    headers = {}
+    response = requests.request(
+        "POST", NER_url, headers=headers, data=payload)
+    return(response.text)
 
 
 @app.route('/')
@@ -32,4 +45,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

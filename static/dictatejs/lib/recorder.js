@@ -121,7 +121,7 @@
 			let fd = new FormData();
 			fd.append("file", bP, `voice${j++}.raw`);
 			// console.log(fd.get("audio"));
-			let testing = $.ajax({
+			let audioAction = $.ajax({
 				type: "POST",
 				enctype: "multipart/form-data",
 				url: "/audio-reciver/",

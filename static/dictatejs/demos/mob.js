@@ -263,10 +263,8 @@ function __updateFarasaBlocks(text) {
 		})
 		.fail(function () {
 			console.log("diacritizer error");
-		})
-		.always(function () {
-			console.log("finished");
 		});
+
 	let pos = $.post("https://farasa-api.qcri.org/msa/webapi/pos", {
 		text: text,
 	})
@@ -281,9 +279,23 @@ function __updateFarasaBlocks(text) {
 		.fail(function () {
 			console.log("POS error");
 		});
-	let ner = $.post("http://qatsdemo.cloudapp.net/farasa/requestExecuter.php", {
-		query: text,
-		task: 5,
+
+	// Machine Translation
+	let mt = $.get("https://mt.qcri.org/api/v1/translate", {
+		key: "247b2662312d8aca15b4be6f7ee888c9",
+		langpair: "ar-en",
+		domain: "general-neural",
+		text: text,
+	})
+		.done(function (data) {
+			$("#translation").empty().append(data.translatedText);
+		})
+		.fail(function () {
+			console.log("Translation error");
+		});
+
+	let ner = $.post("/ner-reciever/", {
+		text: text,
 	})
 		.done(function (data) {
 			$("#ner").empty().append(data);
@@ -352,7 +364,7 @@ function clearTranscription() {
 }
 
 function clearFarasaBlocks() {
-	let blocks = ["#ner", "#diac", "#seg", "#pos"];
+	let blocks = ["#ner", "#diac", "#seg", "#pos", "#translation"];
 	// Resets the scrolled height to the begining
 	blocks.forEach((b) => {
 		$(b).empty();
@@ -369,26 +381,16 @@ function clearCache() {
 	// Turns the buffer-text div on
 	bufferTextSwitch(true);
 
-	$(".perc-1")
-		.empty()
-		.append(
-			'<h4>Country</h4><span class="badge bg-primary rounded-pill p-1">%</span>'
-		);
-	$(".perc-2")
-		.empty()
-		.append(
-			'<h4>Country</h4><span class="badge bg-primary rounded-pill p-1">%</span>'
-		);
-	$(".perc-3")
-		.empty()
-		.append(
-			'<h4>Country</h4><span class="badge bg-primary rounded-pill p-1">%</span>'
-		);
-	$(".perc-4")
-		.empty()
-		.append(
-			'<h4>Country</h4><span class="badge bg-primary rounded-pill p-1">%</span>'
-		);
+	let items = [".perc-1", ".perc-2", ".perc-3", ".perc-4"];
+	// Resets the scrolled height to the begining
+	items.forEach((item) => {
+		$(item)
+			.empty()
+			.append(
+				'<h4>Country</h4><span class="badge bg-primary rounded-pill p-1">%</span>'
+			);
+	});
+
 	Object.keys($mapcontainer.data("mapael").areas).forEach(function (
 		key,
 		index
