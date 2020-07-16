@@ -49,6 +49,18 @@
   max-height: 307px;
 }
 
+.grid-layout .main .output .switchable .toggleContainer {
+  margin: 1px;
+  right: 3%;
+}
+
+.grid-layout .main .output .switchable .card {
+  height: 100%;
+  margin-bottom: 1rem;
+  min-height: 307px;
+  max-height: 307px;
+}
+
 .grid-layout .seg,
 .grid-layout .diac,
 .grid-layout .ner {
@@ -72,7 +84,6 @@
 .diacList {
   width: 75%;
   margin: 1rem auto 1rem auto;
-  opacity: 0.3;
 }
 
 .diacList ul {
@@ -81,6 +92,10 @@
 
 .diacList ul li {
   height: 5rem;
+}
+
+.map {
+  opacity: 0.3;
 }
 
 .mapcontainer {
@@ -104,7 +119,7 @@
   opacity: 0.9;
   border-radius: 10px;
   padding: 10px;
-  z-index: 1000;
+  z-index: 100;
   max-width: 200px;
   display: none;
   color: #343434;
@@ -143,6 +158,15 @@
   .grid-layout .main .output .card {
     margin-bottom: 0;
     max-height: 317px;
+  }
+  .grid-layout .main .output .switchable .toggleContainer {
+    margin: 1px;
+    right: 50.25%;
+  }
+  .grid-layout .main .output .switchable .card {
+    margin-bottom: 0;
+    max-height: 317px;
+    height: 100%;
   }
   .grid-layout .main .mapcontainer,
   .grid-layout .main .diacList {

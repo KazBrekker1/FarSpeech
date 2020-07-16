@@ -31,6 +31,18 @@
 				min-height: 307px;
 				max-height: 307px;
 			}
+			.switchable {
+				.toggleContainer {
+					margin: 1px;
+					right: 3%;
+				}
+				.card {
+					height: 100%;
+					margin-bottom: 1rem;
+					min-height: 307px;
+					max-height: 307px;
+				}
+			}
 		}
 	}
 	.seg,
@@ -55,13 +67,15 @@
 .diacList {
 	width: 75%;
 	margin: 1rem auto 1rem auto;
-	opacity: 0.3;
 	ul {
 		margin: auto;
 		li {
 			height: 5rem;
 		}
 	}
+}
+.map {
+	opacity: 0.3;
 }
 .mapcontainer {
 	pointer-events: none;
@@ -80,7 +94,7 @@
 	opacity: 0.9;
 	border-radius: 10px;
 	padding: 10px;
-	z-index: 1000;
+	z-index: 100;
 	max-width: 200px;
 	display: none;
 	color: #343434;
@@ -110,6 +124,17 @@
 				.card {
 					margin-bottom: 0;
 					max-height: 317px;
+				}
+				.switchable {
+					.toggleContainer {
+						margin: 1px;
+						right: 50.25%;
+					}
+					.card {
+						margin-bottom: 0;
+						max-height: 317px;
+						height: 100%;
+					}
 				}
 			}
 			.mapcontainer,

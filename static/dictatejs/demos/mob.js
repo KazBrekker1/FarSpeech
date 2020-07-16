@@ -12,9 +12,11 @@ let isConnected = false;
 let tt = new Transcription();
 let sessionText = {
 	Raw: "",
+	Translated: "",
 	Segmented: "",
 	Diactrized: "",
 	partsOfSpeach: "",
+	Dialects: "",
 };
 let startPosition = 0;
 let endPosition = 0;
@@ -201,17 +203,16 @@ let dictate = new Dictate({
 		$("#trans").prop("selectionStart", endPosition);
 		doUpper = /\. *$/.test(hypText) || /\n *$/.test(hypText);
 		doPrependSpace = hypText.length > 0 && !/\n *$/.test(hypText);
+
 		// Scrolls Down the Divs as the amount of text incerases
-		$(".name-entity").scrollTop($(".name-entity").height());
-		$(".segmenter").scrollTop($(".segmenter").height());
-		$(".diacritization").scrollTop($(".diacritization").height());
-		$(".parts-of-speach").scrollTop($(".parts-of-speach").height());
+		$(".scrollable").each((index, element) => {
+			$(element).scrollTop($(element).height());
+		});
 
 		// This Calls a method in the backend to stream blobs into the ADI api
 		// Can Cause Error Initially Due to the absence of RAW Files to Send (Ignore the Error Caused in the dialect handleing loop below)
 		$.get("/audio-reciver/").done((res) => {
 			let goal = JSON.parse(res);
-			// console.log(goal);
 			updateMapAndList(goal);
 		});
 	},
@@ -427,10 +428,10 @@ let saveSession = (text) => {
 };
 
 // Updates The Map And The List
-let updateMapAndList = (goal) => {
+let updateMapAndList = (info) => {
 	let sortable = [];
-	for (let dialect in goal[0]["final_score"]) {
-		sortable.push([dialect, goal[0]["final_score"][dialect]]);
+	for (let dialect in info[0]["final_score"]) {
+		sortable.push([dialect, info[0]["final_score"][dialect]]);
 	}
 
 	sortable.sort(function (a, b) {
@@ -442,7 +443,7 @@ let updateMapAndList = (goal) => {
 
 	// List Updating
 	topX = sortable.slice(0, 4);
-	console.log(topX);
+	// console.log(topX);
 	$(".perc-1")
 		.empty()
 		.append(
@@ -593,7 +594,10 @@ function init() {
 }
 
 // Changes the dropdown list's arrow according to the screen size
+// Hides Diac List and Segmentation block for Map and POS to be the default
 let screenCheck = () => {
+	$(".segmentation").attr("hidden", true);
+	$(".diacList").attr("hidden", true);
 	if ($(window).width() < 768) {
 		// console.log("This Is Phone");
 		$(".tools").removeClass("dropdown");
@@ -603,10 +607,17 @@ let screenCheck = () => {
 
 // Toggeling Between Map and List
 let hidden = false;
-let handleContainerView = async () => {
-	$(".map").attr("hidden", hidden);
-	$(".diacList").attr("hidden", !hidden);
+let handleContainerView = () => {
+	$(".diacList").attr("hidden", hidden);
+	$(".map").attr("hidden", !hidden);
 	hidden = !hidden;
+};
+
+let choice = false;
+let handleBoxView = () => {
+	$(".segmentation").attr("hidden", choice);
+	$(".parts-of-speach").attr("hidden", !choice);
+	choice = !choice;
 };
 
 // Handles the Buffer-Text's Visibility and the .mapcontainer's interactivity
@@ -614,7 +625,7 @@ let bufferTextSwitch = (bool) => {
 	$(".mapcontainer").css({
 		"pointer-events": bool ? "none" : "all",
 	});
-	$(".diacList").css({
+	$(".map").css({
 		opacity: bool ? 0.3 : 1,
 	});
 	$(".buffer-text").css({
@@ -632,6 +643,4 @@ $(document).ready(function () {
 		dictate.setServerStatus(servers[1]);
 	});
 });
-// To Hide the Map and Show the list initially
-$(".map").attr("hidden", true);
 screenCheck();
