@@ -109,8 +109,11 @@
       <div class="switchable">
         <!-- Toggler Div -->
         <div class="toggleContainer">
-          <input class="toggle" type="checkbox" checked data-toggle="toggle" data-on="POS" data-off="SEG"
-            data-onstyle="dark" data-offstyle="dark" onchange="handleBoxView()" />
+          <label class="form-label bg-light rounded" for="boxToggle" style="padding: 0.25rem 0.25rem 0.5rem 0.25rem;">
+            POS / SEG
+          </label>
+          <input name="boxToggle" class="toggle" type="checkbox" checked data-toggle="toggle" data-on="POS"
+            data-off="SEG" data-onstyle="dark" data-offstyle="dark" onchange="handleBoxView()" />
         </div>
         <div class="card bg-success text-white parts-of-speach">
           <div class="card-header font-weight-bold">
@@ -139,8 +142,11 @@
       </h3>
       <!-- Toggler Div -->
       <div class="toggleContainer">
-        <input class="toggle" type="checkbox" checked data-toggle="toggle" data-on="Map" data-off="List"
-          data-onstyle="warning" data-offstyle="secondary" onchange="handleContainerView()" />
+        <label class="form-label bg-light rounded" for="mapToggle" style="padding: 0.25rem 0.25rem 0.5rem 0.25rem;">
+          Map / List
+        </label>
+        <input name="mapToggle" class="toggle" type="checkbox" checked data-toggle="toggle" data-on="Map"
+          data-off="List" data-onstyle="warning" data-offstyle="secondary" onchange="handleContainerView()" />
       </div>
       <!-- Card's Text -->
       <div class="card-body p-0 pt-2 text-white text-center" style="flex: 0;">

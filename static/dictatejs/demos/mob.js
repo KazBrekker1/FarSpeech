@@ -11,12 +11,12 @@ let isConnected = false;
 
 let tt = new Transcription();
 let sessionText = {
-	Raw: "",
-	Translated: "",
-	Segmented: "",
-	Diactrized: "",
-	partsOfSpeach: "",
-	Dialects: "",
+	Raw: "Oops!. An Error Happened",
+	Translated: "Oops!. An Error Happened",
+	Segmented: "Oops!. An Error Happened",
+	Diactrized: "Oops!. An Error Happened",
+	partsOfSpeach: "Oops!. An Error Happened",
+	Dialects: "Oops!. An Error Happened",
 };
 let startPosition = 0;
 let endPosition = 0;
@@ -274,7 +274,6 @@ function __updateFarasaBlocks(text) {
 				array[index] = value.POS;
 			});
 			$("#pos").empty().append(data.join(" "));
-			// Containes Parts Of Speach Data
 			sessionText.partsOfSpeach = data.join(" ");
 		})
 		.fail(function () {
@@ -285,11 +284,12 @@ function __updateFarasaBlocks(text) {
 	let mt = $.get("https://mt.qcri.org/api/v1/translate", {
 		key: "247b2662312d8aca15b4be6f7ee888c9",
 		langpair: "ar-en",
-		domain: "general-neural",
+		domain: "dialectal",
 		text: text,
 	})
 		.done(function (data) {
 			$("#translation").empty().append(data.translatedText);
+			sessionText.Translated = data.translatedText;
 		})
 		.fail(function () {
 			console.log("Translation error");
@@ -443,7 +443,15 @@ let updateMapAndList = (info) => {
 
 	// List Updating
 	topX = sortable.slice(0, 4);
-	// console.log(topX);
+
+	sessionText.Dialects = `1st.[${DialectLabels[topX[0][0]]} ${
+		topX[0][1] * 100
+	}%] 2nd.[${DialectLabels[topX[1][0]]} ${topX[1][1] * 100}%] 3rd.[${
+		DialectLabels[topX[2][0]]
+	} ${topX[2][1] * 100}%] 4th.[${DialectLabels[topX[3][0]]} ${
+		topX[3][1] * 100
+	}%]`;
+	
 	$(".perc-1")
 		.empty()
 		.append(
