@@ -1,0 +1,38 @@
+<div class="card bg-dark rounded mapcontainer">
+  <h3 class="buffer-text bg-warning text-danger rounded p-4 text-center shadow-lg">
+    Start / Keep Speaking for Results
+  </h3>
+  <!-- Toggler Div 2 -->
+  <div class="toggleContainer">
+    <input name="mapToggle" data-width="150" data-height="41" class="toggle" type="checkbox" checked
+      data-toggle="toggle" data-on="Switch To List" data-off="Switch To Map" data-onstyle="warning"
+      data-offstyle="secondary" onchange="handleContainerView()" />
+  </div>
+  <!-- Card's Text -->
+  <div class="card-body p-0 pt-2 text-white text-center" style="flex: 0;">
+    <h4 class="text-center">Dialect Predection</h4>
+  </div>
+  <!-- Map Div -->
+  <div class="map card-img-top"></div>
+  <!-- List Div -->
+  <div class="diacList">
+    <ul class="list-group bg-dark shadow-lg">
+      <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-danger perc-1">
+        <h4>Country</h4>
+        <span class="badge bg-primary rounded-pill p-2">%</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-warning perc-2">
+        <h4>Country</h4>
+        <span class="badge bg-primary rounded-pill p-2">%</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-secondary perc-3">
+        <h4>Country</h4>
+        <span class="badge bg-primary rounded-pill p-2">%</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info perc-4">
+        <h4>Country</h4>
+        <span class="badge bg-primary rounded-pill p-2">%</span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block container %}
+
+<!-- Renders Modal From Modal.html -->
+{% include 'modal.html' %}
+<!-- Grid Layout -->
+<div class="grid-layout">
+  <!-- ASR Server Values -->
+  <input id="servers" name="servers" type="hidden"
+    value="wss://liveqats.qcri.org:8888/client/ws/speech|wss://liveqats.qcri.org:8888/client/ws/status" />
+
+  <!-- Renders Upper Div from upper.html -->
+  {% include 'upper.html' %}
+  <!-- Main Container -->
+  <div class="main">
+    <!-- Renders The Output Div from output.html -->
+    {% include 'output.html' %}
+    <!-- Renders the Map Container From mapContainer.html -->
+    {% include 'mapContainer.html' %}
+  </div>
+</div>
+{% endblock %}

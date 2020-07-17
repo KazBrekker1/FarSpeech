@@ -1,0 +1,59 @@
+<div class="output">
+  <div hidden>
+    Arabic Speech Recognition Output
+    <textarea id="trans"></textarea>
+  </div>
+
+  <div class="card bg-dark text-white name-entity">
+    <div class="card-header font-weight-bold">
+      Name Entity Recognition
+    </div>
+    <div class="card-body overflow-auto scrollable">
+      <p class="card-text ner" id="ner"></p>
+    </div>
+  </div>
+
+  <div class="card border-info translation">
+    <div class="card-header border-info text-info font-weight-bold">
+      Translation
+    </div>
+    <div class="card-body bg-light overflow-auto scrollable">
+      <p class="card-text text-info mTrans" id="translation"></p>
+    </div>
+  </div>
+
+  <div class="card bg-secondary text-white diactrization">
+    <div class="card-header font-weight-bold">
+      Word Diactrization
+    </div>
+    <div class="card-body overflow-auto scrollable">
+      <p class="card-text diac" id="diac"></p>
+    </div>
+  </div>
+
+  <div class="switchable">
+    <!-- Toggler Div 1 -->
+    <div class="toggleContainer">
+      <input name="boxToggle" class="toggle" data-width="150" data-height="41" type="checkbox" checked
+        data-toggle="toggle" data-on="Switch To SEG." data-off="Switch To P.O.S" data-onstyle="dark"
+        data-offstyle="dark" onchange="handleBoxView()" />
+    </div>
+    <div class="card bg-success text-white parts-of-speach">
+      <div class="card-header font-weight-bold">
+        Parts of Speach
+      </div>
+      <div class="card-body overflow-auto scrollable">
+        <p class="card-text pos" id="pos"></p>
+      </div>
+    </div>
+
+    <div class="card bg-info text-white segmentation">
+      <div class="card-header font-weight-bold">
+        Word segmintation
+      </div>
+      <div class="card-body overflow-auto scrollable">
+        <p class="card-text seg" id="seg"></p>
+      </div>
+    </div>
+  </div>
+</div>
