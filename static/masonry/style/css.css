@@ -136,7 +136,7 @@
   font-size: 1rem !important;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1350px) {
   .grid-layout {
     height: 100%;
     width: 100%;
