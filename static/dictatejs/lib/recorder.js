@@ -109,7 +109,7 @@
 		};
 		let i = 1; // initiating to count onmessage() ticks
 		let j = 0; // initiating to name downloaded files
-		worker.onmessage = function (e) {
+		worker.onmessage = (e) => {
 			var blob = e.data;
 			currCallback(blob);
 			myBlobBuilder.append(blob);
@@ -124,7 +124,7 @@
 			let audioAction = $.ajax({
 				type: "POST",
 				enctype: "multipart/form-data",
-				url: "/audio-reciver/",
+				url: "/audio-receiver/",
 				data: fd,
 				processData: false,
 				contentType: false,

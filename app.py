@@ -8,7 +8,12 @@ ADI_url = "https://dialectid.qcri.org/adi17api"
 NER_url = "http://qatsdemo.cloudapp.net/farasa/requestExecuter.php"
 
 
-@app.route('/audio-reciver/', methods=['GET', 'POST'])
+@app.route('/')
+def hello_world():
+    return render_template('Main.html')
+
+
+@app.route('/audio-receiver/', methods=['GET', 'POST'])
 def File_In():
     # Ignore Error Produced due to 400 Bad Request: KeyError: "file"
     file = request.files["file"]
@@ -27,7 +32,7 @@ def File_In():
     return response.text.encode('utf8').decode('utf8')
 
 
-@app.route('/ner-reciever/', methods=['GET', 'POST'])
+@app.route('/ner-receiver/', methods=['GET', 'POST'])
 def name_entity_recognition():
     payload = {
         "query": request.values['text'],
@@ -39,10 +44,5 @@ def name_entity_recognition():
     return(response.text)
 
 
-@app.route('/')
-def hello_world():
-    return render_template('main.html')
-
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

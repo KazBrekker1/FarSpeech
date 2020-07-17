@@ -1,3 +1,8 @@
+.modal {
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
 .grid-layout {
   height: 100%;
   width: 100%;
@@ -49,9 +54,15 @@
   max-height: 307px;
 }
 
+.grid-layout .main .output .switchable {
+  position: relative;
+}
+
 .grid-layout .main .output .switchable .toggleContainer {
+  position: absolute;
+  z-index: 99;
   margin: 1px;
-  right: 3%;
+  right: 0;
 }
 
 .grid-layout .main .output .switchable .card {
@@ -59,6 +70,55 @@
   margin-bottom: 1rem;
   min-height: 307px;
   max-height: 307px;
+}
+
+.grid-layout .main .mapcontainer {
+  pointer-events: none;
+}
+
+.grid-layout .main .mapcontainer .toggleContainer {
+  position: absolute;
+  z-index: 99;
+}
+
+.grid-layout .main .mapcontainer .diacList {
+  width: 75%;
+  margin: 1rem auto 1rem auto;
+}
+
+.grid-layout .main .mapcontainer .diacList ul {
+  margin: auto;
+}
+
+.grid-layout .main .mapcontainer .diacList ul li {
+  height: 5rem;
+}
+
+.grid-layout .main .mapcontainer .map {
+  opacity: 0.3;
+}
+
+.grid-layout .main .mapcontainer .map .mapael .mapTooltip {
+  position: absolute;
+  background-color: #fff;
+  opacity: 0.9;
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 100;
+  max-width: 200px;
+  display: none;
+  color: #343434;
+}
+
+.grid-layout .main .mapcontainer .buffer-text {
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transition: ease 500ms;
+  transition: ease 500ms;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .grid-layout .seg,
@@ -76,55 +136,6 @@
   font-size: 1rem !important;
 }
 
-.toggleContainer {
-  position: absolute;
-  z-index: 99;
-}
-
-.diacList {
-  width: 75%;
-  margin: 1rem auto 1rem auto;
-}
-
-.diacList ul {
-  margin: auto;
-}
-
-.diacList ul li {
-  height: 5rem;
-}
-
-.map {
-  opacity: 0.3;
-}
-
-.mapcontainer {
-  pointer-events: none;
-}
-
-.mapcontainer .buffer-text {
-  z-index: 10;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transition: ease 500ms;
-  transition: ease 500ms;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.mapael .mapTooltip {
-  position: absolute;
-  background-color: #fff;
-  opacity: 0.9;
-  border-radius: 10px;
-  padding: 10px;
-  z-index: 100;
-  max-width: 200px;
-  display: none;
-  color: #343434;
-}
-
 @media screen and (min-width: 768px) {
   .grid-layout {
     height: 100%;
@@ -135,60 +146,6 @@
     display: grid;
     -ms-grid-rows: 10% 90%;
         grid-template-rows: 10% 90%;
-  }
-  .grid-layout .main {
-    grid-column: 1/-1;
-    display: -ms-grid;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 50%;
-    gap: 10px;
-    height: 100%;
-    width: 99%;
-  }
-  .grid-layout .main .output {
-    display: -ms-grid;
-    display: grid;
-    height: 100%;
-    width: 100%;
-    gap: 3px;
-    -ms-grid-columns: 50% 50%;
-        grid-template-columns: 50% 50%;
-  }
-  .grid-layout .main .output .card {
-    margin-bottom: 0;
-    max-height: 317px;
-  }
-  .grid-layout .main .output .switchable .toggleContainer {
-    margin: 1px;
-    right: 50.25%;
-  }
-  .grid-layout .main .output .switchable .card {
-    margin-bottom: 0;
-    max-height: 317px;
-    height: 100%;
-  }
-  .grid-layout .main .mapcontainer,
-  .grid-layout .main .diacList {
-    width: 100%;
-    height: 100%;
-  }
-  .grid-layout .main .diacList {
-    width: 50%;
-    margin: 6rem auto auto auto;
-  }
-  .grid-layout .main .diacList ul {
-    margin: auto;
-  }
-  .grid-layout .main .diacList ul li {
-    margin: 0.5rem;
-    -webkit-transition: ease 200ms;
-    transition: ease 200ms;
-    border-radius: 0.25rem !important;
-  }
-  .grid-layout .main .diacList ul li:hover {
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05);
   }
   .grid-layout .upper {
     grid-column: 1/-1;
@@ -219,6 +176,56 @@
   .grid-layout .upper .start-btn {
     width: 30%;
     font-size: larger;
+  }
+  .grid-layout .main {
+    grid-column: 1/-1;
+    display: -ms-grid;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 50%;
+    gap: 10px;
+    height: 100%;
+    width: 99%;
+  }
+  .grid-layout .main .output {
+    display: -ms-grid;
+    display: grid;
+    height: 100%;
+    width: 100%;
+    gap: 3px;
+    -ms-grid-columns: 50% 50%;
+        grid-template-columns: 50% 50%;
+  }
+  .grid-layout .main .output .card {
+    margin-bottom: 0;
+    max-height: 317px;
+  }
+  .grid-layout .main .output .switchable .card {
+    margin-bottom: 0;
+    max-height: 317px;
+    height: 100%;
+  }
+  .grid-layout .main .mapcontainer,
+  .grid-layout .main .diacList {
+    width: 100%;
+    height: 100%;
+  }
+  .grid-layout .main .diacList {
+    width: 50%;
+    margin: 6rem auto auto auto;
+  }
+  .grid-layout .main .diacList ul {
+    margin: auto;
+  }
+  .grid-layout .main .diacList ul li {
+    margin: 0.5rem;
+    -webkit-transition: ease 200ms;
+    transition: ease 200ms;
+    border-radius: 0.25rem !important;
+  }
+  .grid-layout .main .diacList ul li:hover {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
   }
   .grid-layout footer {
     grid-column: 1/-1;

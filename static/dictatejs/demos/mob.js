@@ -10,14 +10,6 @@
 let isConnected = false;
 
 let tt = new Transcription();
-let sessionText = {
-	Raw: "Oops!. An Error Happened",
-	Translated: "Oops!. An Error Happened",
-	Segmented: "Oops!. An Error Happened",
-	Diactrized: "Oops!. An Error Happened",
-	partsOfSpeach: "Oops!. An Error Happened",
-	Dialects: "Oops!. An Error Happened",
-};
 let startPosition = 0;
 let endPosition = 0;
 let doUpper = false;
@@ -76,25 +68,6 @@ let countriesOfDialect = {
 	UAE: ["ae"],
 	YEM: ["ye"],
 };
-let DialectLabels = {
-	ALG: "Algeria",
-	EGY: "Egypt",
-	IRA: "Iraq",
-	JOR: "Jordan",
-	KSA: "Saudi Arabia",
-	KUW: "Kuwait",
-	LEB: "Lebanon",
-	LIB: "Libya",
-	MAU: "Mauritania",
-	MOR: "Morocco",
-	OMA: "Oman",
-	PAL: "Palestine",
-	QAT: "Qatar",
-	SUD: "Sudan",
-	SYR: "Syria",
-	UAE: "United Arab Emirates",
-	YEM: "Yemen",
-};
 
 function capitaliseFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
@@ -126,6 +99,7 @@ function prettyfyHyp(text, doCapFirst, doPrependSpace) {
 	text = text.replace(/ ?\n ?/g, "\n");
 	return text;
 }
+
 let dictate = new Dictate({
 	server: $("#servers").val().split("|")[0],
 	serverStatus: $("#servers").val().split("|")[1],
@@ -135,14 +109,11 @@ let dictate = new Dictate({
 	onReadyForSpeech: function () {
 		isConnected = true;
 		__message("READY FOR SPEECH");
-		$(".buttonsContainer").addClass("live");
 		$(".micButton").removeClass("btn-outline-danger");
 		$(".micButton").addClass("btn-danger");
 		$("#buttonToggleListening").html("Stop");
 		stopwatch.start();
 		$("#buttonToggleListening").prop("disabled", false);
-		$("#buttonCancel").prop("disabled", false);
-		$("#resetButton").prop("disabled", true);
 		endPosition = startPosition;
 		let textBeforeCaret = $("#trans").val().slice(0, startPosition);
 		doUpper =
@@ -166,8 +137,6 @@ let dictate = new Dictate({
 		$(".micButton").addClass("btn-outline-danger");
 		stopwatch.stop();
 		$("#buttonToggleListening").prop("disabled", false);
-		$("#buttonCancel").prop("disabled", true);
-		$("#resetButton").prop("disabled", false);
 	},
 	onServerStatus: function (json) {
 		__serverStatus(json.num_workers_available);
@@ -193,10 +162,7 @@ let dictate = new Dictate({
 		$("#trans").val(
 			val.slice(0, startPosition) + hypText + val.slice(endPosition)
 		);
-
-		// console.log(val);
 		sessionText.Raw = val;
-
 		__updateFarasaBlocks($("#trans").val());
 		startPosition = startPosition + hypText.length;
 		endPosition = startPosition;
@@ -204,14 +170,14 @@ let dictate = new Dictate({
 		doUpper = /\. *$/.test(hypText) || /\n *$/.test(hypText);
 		doPrependSpace = hypText.length > 0 && !/\n *$/.test(hypText);
 
-		// Scrolls Down the Divs as the amount of text incerases
+		// Scrolls Down the Divs as the amount of text increases
 		$(".scrollable").each((index, element) => {
 			$(element).scrollTop($(element).height());
 		});
 
 		// This Calls a method in the backend to stream blobs into the ADI api
-		// Can Cause Error Initially Due to the absence of RAW Files to Send (Ignore the Error Caused in the dialect handleing loop below)
-		$.get("/audio-reciver/").done((res) => {
+		// Can Cause Error Initially Due to the absence of RAW Files to Send (Ignore the Error Caused in the dialect handling loop below)
+		$.get("/audio-receiver/").done((res) => {
 			let goal = JSON.parse(res);
 			updateMapAndList(goal);
 		});
@@ -221,7 +187,7 @@ let dictate = new Dictate({
 		__error(code, data);
 	},
 	onEvent: function (code, data) {
-		// Commented for Debugging Clarity in the consol
+		// Commented for Debugging Clarity in the console
 		// __message(code, data);
 	},
 });
@@ -239,111 +205,10 @@ function __updateTranscript(text) {
 	$("#trans").val(text);
 }
 
-function __updateFarasaBlocks(text) {
-	let segmenter = $.post("https://farasa-api.qcri.org/msa/webapi/segmenter", {
-		text: text,
-	})
-		.done(function (data) {
-			$("#seg").empty().append(data.segtext.join(" "));
-			// Contains Segmenter Output
-			// console.log(data.segtext.join(" "));
-			sessionText.Segmented = data.segtext.join(" ");
-		})
-		.fail(function () {
-			console.log("segmenter error");
-		});
-	let diacritizer = $.post(
-		"https://farasa-api.qcri.org/msa/webapi/diacritizeV2",
-		{ text: text }
-	)
-		.done(function (data) {
-			$("#diac").empty().append(data.output);
-			// Contains Diactrizer Output
-			// console.log(data.output);
-			sessionText.Diactrized = data.output;
-		})
-		.fail(function () {
-			console.log("diacritizer error");
-		});
-
-	let pos = $.post("https://farasa-api.qcri.org/msa/webapi/pos", {
-		text: text,
-	})
-		.done(function (data) {
-			data.forEach((value, index, array) => {
-				array[index] = value.POS;
-			});
-			$("#pos").empty().append(data.join(" "));
-			sessionText.partsOfSpeach = data.join(" ");
-		})
-		.fail(function () {
-			console.log("POS error");
-		});
-
-	// Machine Translation
-	let mt = $.get("https://mt.qcri.org/api/v1/translate", {
-		key: "247b2662312d8aca15b4be6f7ee888c9",
-		langpair: "ar-en",
-		domain: "dialectal",
-		text: text,
-	})
-		.done(function (data) {
-			$("#translation").empty().append(data.translatedText);
-			sessionText.Translated = data.translatedText;
-		})
-		.fail(function () {
-			console.log("Translation error");
-		});
-
-	let ner = $.post("/ner-reciever/", {
-		text: text,
-	})
-		.done(function (data) {
-			$("#ner").empty().append(data);
-		})
-		.fail(function () {
-			console.log("NER error");
-		});
-
-	// Commented Till Farasa's Server Problem Is Fixed
-	// let ner = $.post("https://farasa-api.qcri.org/msa/webapi/ner", {
-	// 	text: text,
-	// })
-	// 	.done(function (data) {
-	// 		let out = "";
-	// 		data.forEach((text) => {
-	// 			let flag = text.split("/")[1].slice(-3);
-	// 			let content = [text.split("/")[0]];
-	// 			switch (flag) {
-	// 				case "LOC":
-	// 					out += `<span class="text-danger"><strong> ${content} </strong></span>`;
-	// 					break;
-	// 				case "ORG":
-	// 					out += `<span class="text-primary"><strong> ${content} </strong></span>`;
-	// 					break;
-	// 				case "ERS":
-	// 					out += `<span class="text-success"><strong> ${content} </strong></span>`;
-	// 					break;
-	// 				case "O":
-	// 					out += `<span><strong> ${content} </strong></span>`;
-	// 					break;
-	// 				default:
-	// 					out += `<span><strong> ${content} </strong></span>`;
-	// 					break;
-	// 			}
-	// 		});
-	// 		$("#ner").empty().append(out);
-	// 	})
-	// 	.fail(function () {
-	// 		console.log("NER error");
-	// 	});
-}
-
 function __serverStatus(msg) {
 	$("#serverWorkers").text(msg);
 }
 
-// Public methods (called from the GUI)
 function toggleListening() {
 	if (isConnected) {
 		dictate.stopListening();
@@ -416,231 +281,11 @@ function clearCache() {
 	$(".stopwatch").text("00:00:00");
 }
 
-let saveSessionHandler = () => {
-	saveSession(sessionText);
-};
-
-// Saves the Text Spoken to a .txt file as a json object
-let saveSession = (text) => {
-	let value = JSON.stringify(text, null, 2);
-	let blob = new Blob([value], { type: "text/plain;charset=utf-8" });
-	saveAs(blob, "Raw.txt");
-};
-
-// Updates The Map And The List
-let updateMapAndList = (info) => {
-	let sortable = [];
-	for (let dialect in info[0]["final_score"]) {
-		sortable.push([dialect, info[0]["final_score"][dialect]]);
-	}
-
-	sortable.sort(function (a, b) {
-		return b[1] - a[1];
-	});
-
-	// Turns the buffer-text div off
-	bufferTextSwitch(false);
-
-	// List Updating
-	topX = sortable.slice(0, 4);
-
-	sessionText.Dialects = `1st.[${DialectLabels[topX[0][0]]} ${
-		topX[0][1] * 100
-	}%] 2nd.[${DialectLabels[topX[1][0]]} ${topX[1][1] * 100}%] 3rd.[${
-		DialectLabels[topX[2][0]]
-	} ${topX[2][1] * 100}%] 4th.[${DialectLabels[topX[3][0]]} ${
-		topX[3][1] * 100
-	}%]`;
-	
-	$(".perc-1")
-		.empty()
-		.append(
-			`<h4>${
-				DialectLabels[topX[0][0]]
-			}</h4><span class="badge bg-primary rounded-pill p-2">${(
-				topX[0][1] * 100
-			).toPrecision(3)} %</span>`
-		);
-	$(".perc-2")
-		.empty()
-		.append(
-			`<h4>${
-				DialectLabels[topX[1][0]]
-			}</h4><span class="badge bg-primary rounded-pill p-2">${(
-				topX[1][1] * 100
-			).toPrecision(3)} %</span>`
-		);
-	$(".perc-3")
-		.empty()
-		.append(
-			`<h4>${
-				DialectLabels[topX[2][0]]
-			}</h4><span class="badge bg-primary rounded-pill p-2">${(
-				topX[2][1] * 100
-			).toPrecision(3)} %</span>`
-		);
-	$(".perc-4")
-		.empty()
-		.append(
-			`<h4>${
-				DialectLabels[topX[3][0]]
-			}</h4><span class="badge bg-primary rounded-pill p-2">${(
-				topX[3][1] * 100
-			).toPrecision(3)} %</span>`
-		);
-
-	// console.log(sortable); // This Containes the Countries Sorted Out
-	dialectHistory.push(sortable[0][0]);
-
-	let dialectFreq = (function () {
-		/* Below is a regular expression that finds alphanumeric characters
-							 Next is a string that could easily be replaced with a reference to a form control
-							 Lastly, we have an array that will hold any words matching our pattern */
-		// var pattern = /\w+/g,
-		//     string = "I I am am am yes yes.",
-		//     matchedWords = string.match( pattern );
-
-		/* The Array.prototype.reduce method assists us in producing a single value from an
-							 array. In this case, we're going to use it to output an object with results. */
-		let counts = dialectHistory.reduce(function (stats, word) {
-			/* `stats` is the object that we'll be building up over time.
-									 `word` is each individual entry in the `dialectHistory` array */
-			if (stats.hasOwnProperty(word)) {
-				/* `stats` already has an entry for the current `word`.
-											 As a result, let's increment the count for that `word`. */
-				stats[word] = stats[word] + 1;
-			} else {
-				/* `stats` does not yet have an entry for the current `word`.
-											 As a result, let's add a new entry, and set count to 1. */
-				stats[word] = 1;
-			}
-
-			/* Because we are building up `stats` over numerous iterations,
-									 we need to return it for the next pass to modify it. */
-			return stats;
-		}, {});
-
-		/* Now that `counts` has our object, we can log it. */
-		return counts;
-	})();
-
-	let max_freq = 0;
-	let dialectWithHighestFreq = "";
-	Object.keys(dialectFreq).forEach(function (key, index) {
-		console.log(key, dialectFreq[key]);
-		if (dialectFreq[key] > max_freq) {
-			max_freq = dialectFreq[key];
-			dialectWithHighestFreq = key;
-		}
-
-		// key: the name of the object key
-		// index: the ordinal position of the key within the object
-	});
-
-	let probabilityOfMainDialect = (max_freq / dialectHistory.length) * 100;
-
-	Object.keys($mapcontainer.data("mapael").areas).forEach(function (
-		key,
-		index
-	) {
-		if (countriesOfDialect[sortable[0][0]].indexOf(key) > -1) {
-			if (sortable[0][0] === "MSA") {
-				updatedOptions.areas[key] = {
-					attrs: {
-						fill: "#4d9c58",
-					},
-				};
-			} else {
-				updatedOptions.areas[key] = {
-					attrs: {
-						fill: "#8B0000",
-					},
-				};
-			}
-		} else if (countriesOfDialect[sortable[1][0]].indexOf(key) > -1) {
-			updatedOptions.areas[key] = {
-				attrs: {
-					fill: "#cd7f32",
-				},
-			};
-		} else if (countriesOfDialect[sortable[2][0]].indexOf(key) > -1) {
-			updatedOptions.areas[key] = {
-				attrs: {
-					fill: "#808080",
-				},
-			};
-		} else if (countriesOfDialect[sortable[3][0]].indexOf(key) > -1) {
-			updatedOptions.areas[key] = {
-				attrs: {
-					fill: "#bbb",
-				},
-			};
-		} else {
-			let isArab = arabCountries.includes(key);
-			if (isArab) {
-				updatedOptions.areas[key] = {
-					attrs: {
-						fill: "#bbb",
-					},
-				};
-			}
-		}
-	});
-	$mapcontainer.trigger("update", [
-		{
-			mapOptions: updatedOptions,
-			animDuration: 1000,
-		},
-	]);
-	// END OF MAP
-};
-
 function init() {
 	clearCache();
 	dictate.init();
 	clearTranscription();
 }
-
-// Changes the dropdown list's arrow according to the screen size
-// Hides Diac List and Segmentation block for Map and POS to be the default
-let screenCheck = () => {
-	$(".segmentation").attr("hidden", true);
-	$(".diacList").attr("hidden", true);
-	if ($(window).width() < 768) {
-		// console.log("This Is Phone");
-		$(".tools").removeClass("dropdown");
-		$(".tools").addClass("dropup");
-	}
-};
-
-// Toggeling Between Map and List
-let hidden = false;
-let handleContainerView = () => {
-	$(".diacList").attr("hidden", hidden);
-	$(".map").attr("hidden", !hidden);
-	hidden = !hidden;
-};
-
-let choice = false;
-let handleBoxView = () => {
-	$(".segmentation").attr("hidden", choice);
-	$(".parts-of-speach").attr("hidden", !choice);
-	choice = !choice;
-};
-
-// Handles the Buffer-Text's Visibility and the .mapcontainer's interactivity
-let bufferTextSwitch = (bool) => {
-	$(".mapcontainer").css({
-		"pointer-events": bool ? "none" : "all",
-	});
-	$(".map").css({
-		opacity: bool ? 0.3 : 1,
-	});
-	$(".buffer-text").css({
-		opacity: bool ? 1 : 0,
-		"z-index": bool ? 10 : -1,
-	});
-};
 
 $(document).ready(function () {
 	dictate.init();
@@ -651,4 +296,3 @@ $(document).ready(function () {
 		dictate.setServerStatus(servers[1]);
 	});
 });
-screenCheck();

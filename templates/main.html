@@ -1,184 +1,22 @@
 {% extends 'base.html' %}
 {% block container %}
-<!-- Modal -->
-<div class="modal fade" id="openingModal" tabindex="-1" aria-labelledby="openingModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-dark">
-      <div class="modal-header text-white">
-        <h5 class="modal-title" id="openingModalLabel">Information</h5>
-      </div>
-      <div class="modal-body">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item list-group-item-warning mb-2 rounded shadow">This app is targeting Non-IOS devices
-            due to recording instabilities
-          </li>
-          <li class="list-group-item list-group-item-warning mb-2 rounded shadow">View on a desktop for the best view
-          </li>
-          <li class="list-group-item list-group-item-info rounded shadow">This Project's
-            <a href="https://github.com/KazBrekker1/FarSpeech">GitHub Page</a>
-          </li>
-        </ul>
-      </div>
-      <div class="modal-footer border-dark">
-        <button type="button" class="btn btn-danger shadow-sm" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+<!-- Renders Modal From Modal.html -->
+{% include 'modal.html' %}
 <!-- Grid Layout -->
 <div class="grid-layout">
+  <!-- ASR Server Values -->
   <input id="servers" name="servers" type="hidden"
     value="wss://liveqats.qcri.org:8888/client/ws/speech|wss://liveqats.qcri.org:8888/client/ws/status" />
-  <!-- Upper Container -->
-  <div class="upper">
-    <!-- Start/Stop -->
-    <button class="btn btn-outline-danger start-btn micButton" id="buttonToggleListening" onclick="toggleListening();"
-      title="Starts/stops listening for speech.">
-      Speak
-    </button>
-    <!-- Timer -->
-    <div class="timer">
-      <div style="text-align: center;">
-        <span class="value stopwatch stat-item">00:00:00</span>
-      </div>
-    </div>
-    <!-- Utils -->
-    <div class="tools btn-group dropdown">
-      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-        aria-expanded="false">
-        <strong>Utilities</strong>
-      </button>
-      <ul class="dropdown-menu p-3">
-        <li>
-          <button class="align-items-center dropdown-item d-flex justify-content-between" disabled type="button">
-            Workers Available
-            <span id="serverWorkers" class="badge bg-primary rounded-pill"></span>
-          </button>
-        </li>
-        <li>
-          <button class="dropdown-item" type="button" onclick="clearCache();">
-            Clear Cache
-          </button>
-        </li>
-        <li>
-          <button class="dropdown-item" type="button" onclick="init();">
-            Re-Initialize Microphone
-          </button>
-        </li>
-        <li>
-          <button class="dropdown-item" type="button" onclick="saveSessionHandler();">
-            Save Text
-          </button>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- Main Contauner -->
+
+  <!-- Renders Upper Div from upper.html -->
+  {% include 'upper.html' %}
+  <!-- Main Container -->
   <div class="main">
-    <div class="output">
-      <div hidden>
-        Arabic Speech Recognition Output
-        <textarea id="trans"></textarea>
-      </div>
-
-      <div class="card bg-dark text-white name-entity">
-        <div class="card-header font-weight-bold">
-          Name Entity Recognition
-        </div>
-        <div class="card-body overflow-auto scrollable">
-          <p class="card-text ner" id="ner"></p>
-        </div>
-      </div>
-
-      <div class="card border-info translation">
-        <div class="card-header border-info text-info font-weight-bold">
-          Translation
-        </div>
-        <div class="card-body bg-light overflow-auto scrollable">
-          <p class="card-text text-info mTrans" id="translation"></p>
-        </div>
-      </div>
-
-      <div class="card bg-secondary text-white diactrization">
-        <div class="card-header font-weight-bold">
-          Word Diactrization
-        </div>
-        <div class="card-body overflow-auto scrollable">
-          <p class="card-text diac" id="diac"></p>
-        </div>
-      </div>
-
-      <div class="switchable">
-        <!-- Toggler Div -->
-        <div class="toggleContainer">
-          <label class="form-label bg-light rounded" for="boxToggle" style="padding: 0.25rem 0.25rem 0.5rem 0.25rem;">
-            POS / SEG
-          </label>
-          <input name="boxToggle" class="toggle" type="checkbox" checked data-toggle="toggle" data-on="POS"
-            data-off="SEG" data-onstyle="dark" data-offstyle="dark" onchange="handleBoxView()" />
-        </div>
-        <div class="card bg-success text-white parts-of-speach">
-          <div class="card-header font-weight-bold">
-            Parts of Speach
-          </div>
-          <div class="card-body overflow-auto scrollable">
-            <p class="card-text pos" id="pos"></p>
-          </div>
-        </div>
-
-        <div class="card bg-info text-white segmentation">
-          <div class="card-header font-weight-bold">
-            Word segmintation
-          </div>
-          <div class="card-body overflow-auto scrollable">
-            <p class="card-text seg" id="seg"></p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="card bg-dark rounded mapcontainer">
-      <h3 class="buffer-text bg-warning text-danger rounded p-4 text-center shadow-lg">
-        Start / Keep Speaking for Results
-      </h3>
-      <!-- Toggler Div -->
-      <div class="toggleContainer">
-        <label class="form-label bg-light rounded" for="mapToggle" style="padding: 0.25rem 0.25rem 0.5rem 0.25rem;">
-          Map / List
-        </label>
-        <input name="mapToggle" class="toggle" type="checkbox" checked data-toggle="toggle" data-on="Map"
-          data-off="List" data-onstyle="warning" data-offstyle="secondary" onchange="handleContainerView()" />
-      </div>
-      <!-- Card's Text -->
-      <div class="card-body p-0 pt-2 text-white text-center" style="flex: 0;">
-        <h4 class="text-center">Dialect Predection</h4>
-      </div>
-      <!-- Map Div -->
-      <div class="map card-img-top"></div>
-      <!-- List Div -->
-      <div class="diacList">
-        <ul class="list-group bg-dark shadow-lg">
-          <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-danger perc-1">
-            <h4>Country</h4>
-            <span class="badge bg-primary rounded-pill p-2">%</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-warning perc-2">
-            <h4>Country</h4>
-            <span class="badge bg-primary rounded-pill p-2">%</span>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center list-group-item-secondary perc-3">
-            <h4>Country</h4>
-            <span class="badge bg-primary rounded-pill p-2">%</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info perc-4">
-            <h4>Country</h4>
-            <span class="badge bg-primary rounded-pill p-2">%</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <!-- Renders The Output Div from output.html -->
+    {% include 'output.html' %}
+    <!-- Renders the Map Container From mapContainer.html -->
+    {% include 'mapContainer.html' %}
   </div>
 </div>
 {% endblock %}

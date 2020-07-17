@@ -1,0 +1,43 @@
+<div class="upper">
+  <!-- Start/Stop -->
+  <button class="btn btn-outline-danger start-btn micButton" id="buttonToggleListening" onclick="toggleListening();"
+    title="Starts/stops listening for speech.">
+    Speak
+  </button>
+  <!-- Timer -->
+  <div class="timer">
+    <div style="text-align: center;">
+      <span class="value stopwatch stat-item">00:00:00</span>
+    </div>
+  </div>
+  <!-- Utils -->
+  <div class="tools btn-group dropdown">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+      aria-expanded="false">
+      <strong>Utilities</strong>
+    </button>
+    <ul class="dropdown-menu p-3">
+      <li>
+        <button class="align-items-center dropdown-item d-flex justify-content-between" disabled type="button">
+          Workers Available
+          <span id="serverWorkers" class="badge bg-primary rounded-pill"></span>
+        </button>
+      </li>
+      <li>
+        <button class="dropdown-item" type="button" onclick="clearCache();">
+          Clear Cache
+        </button>
+      </li>
+      <li>
+        <button class="dropdown-item" type="button" onclick="init();">
+          Re-Initialize Microphone
+        </button>
+      </li>
+      <li>
+        <button class="dropdown-item" type="button" onclick="saveSessionHandler();">
+          Save Text
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
