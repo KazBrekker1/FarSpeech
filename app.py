@@ -10,7 +10,7 @@ NER_url = "http://qatsdemo.cloudapp.net/farasa/requestExecuter.php"
 
 @app.route('/')
 def hello_world():
-    return render_template('Main.html')
+    return render_template('main.html')
 
 
 @app.route('/audio-receiver/', methods=['GET', 'POST'])
