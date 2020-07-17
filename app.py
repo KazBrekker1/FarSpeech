@@ -1,7 +1,6 @@
 import requests
 import os
 from flask import Flask, render_template, request
-from pathlib import Path
 
 app = Flask(__name__)
 ADI_url = "https://dialectid.qcri.org/adi17api"
