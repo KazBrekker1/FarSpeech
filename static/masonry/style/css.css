@@ -54,6 +54,7 @@
 }
 
 .grid-layout .main .output .card .card-header a {
+  cursor: pointer;
   text-decoration: none !important;
   display: block;
   -webkit-user-select: none;
