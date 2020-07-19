@@ -31,8 +31,14 @@
 		.output {
 			.card {
 				margin-bottom: 1rem;
-				min-height: 307px;
 				max-height: 307px;
+				.card-header {
+					a {
+						text-decoration: none !important;
+						display: block;
+						user-select: none;
+					}
+				}
 			}
 			.switchable {
 				position: relative;
@@ -41,12 +47,6 @@
 					z-index: 99;
 					margin: 1px;
 					right: 0;
-				}
-				.card {
-					height: 100%;
-					margin-bottom: 1rem;
-					min-height: 307px;
-					max-height: 307px;
 				}
 			}
 		}
@@ -153,12 +153,22 @@
 				.card {
 					margin-bottom: 0;
 					max-height: 317px;
+					.card-header {
+						a {
+							pointer-events: none;
+						}
+					}
 				}
 				.switchable {
 					.card {
 						margin-bottom: 0;
 						max-height: 317px;
 						height: 100%;
+						.card-header {
+							a {
+								pointer-events: none;
+							}
+						}
 					}
 				}
 			}

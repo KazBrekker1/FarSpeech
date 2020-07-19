@@ -6,53 +6,78 @@
 
   <div class="card bg-dark text-white name-entity">
     <div class="card-header font-weight-bold">
-      Name Entity Recognition
+      <a class="text-white" data-toggle="collapse" data-target="#collapse-ner" aria-expanded="true"
+        aria-controls="collapse-ner" id="heading-example">
+        Name Entity Recognition
+      </a>
     </div>
-    <div class="card-body overflow-auto scrollable">
-      <p class="card-text ner" id="ner"></p>
+    <div id="collapse-ner" class="collapse show" aria-labelledby="heading-example">
+      <div class="card-body overflow-auto scrollable">
+        <p class="card-text ner" id="ner"></p>
+      </div>
     </div>
   </div>
 
   <div class="card border-info translation">
-    <div class="card-header border-info text-info font-weight-bold">
-      Translation
+    <div class="card-header border-info font-weight-bold">
+      <a class="text-info" data-toggle="collapse" data-target="#collapse-translation" aria-expanded="true"
+        aria-controls="collapse-translation" id="heading-example">
+        Translation
+      </a>
     </div>
-    <div class="card-body bg-light overflow-auto scrollable">
-      <p class="card-text text-info mTrans" id="translation"></p>
+    <div id="collapse-translation" class="collapse show" aria-labelledby="heading-example">
+      <div class="card-body bg-light overflow-auto scrollable">
+        <p class="card-text text-info mTrans" id="translation"></p>
+      </div>
     </div>
   </div>
 
   <div class="card bg-secondary text-white diactrization">
     <div class="card-header font-weight-bold">
-      Word Diactrization
+      <a class="text-white" data-toggle="collapse" data-target="#collapse-diac" aria-expanded="true"
+        aria-controls="collapse-diac" id="heading-example">
+        Word Diactrization
+      </a>
     </div>
-    <div class="card-body overflow-auto scrollable">
-      <p class="card-text diac" id="diac"></p>
+    <div id="collapse-diac" class="collapse show" aria-labelledby="heading-example">
+      <div class="card-body overflow-auto scrollable">
+        <p class="card-text diac" id="diac"></p>
+      </div>
     </div>
   </div>
 
   <div class="switchable">
     <!-- Toggler Div 1 -->
     <div class="toggleContainer">
-      <input name="boxToggle" class="toggle" data-width="150" data-height="41" type="checkbox" checked
-        data-toggle="toggle" data-on="Switch To SEG." data-off="Switch To P.O.S" data-onstyle="dark"
-        data-offstyle="dark" onchange="handleBoxView()" />
+      <input name="boxToggle" class="toggle" data-width="100" data-height="41" type="checkbox" checked
+        data-toggle="toggle" data-on="To SEG." data-off="To P.O.S" data-onstyle="warning" data-offstyle="secondary"
+        onchange="handleBoxView()" />
     </div>
     <div class="card bg-success text-white parts-of-speach">
       <div class="card-header font-weight-bold">
-        Parts of Speach
+        <a class="text-white" data-toggle="collapse" data-target="#collapse-pos" aria-expanded="true"
+          aria-controls="collapse-pos" id="heading-example">
+          Parts of Speach
+        </a>
       </div>
-      <div class="card-body overflow-auto scrollable">
-        <p class="card-text pos" id="pos"></p>
+      <div id="collapse-pos" class="collapse show" aria-labelledby="heading-example">
+        <div class="card-body overflow-auto scrollable">
+          <p class="card-text pos" id="pos"></p>
+        </div>
       </div>
     </div>
 
     <div class="card bg-info text-white segmentation">
       <div class="card-header font-weight-bold">
-        Word segmintation
+        <a class="text-white" data-toggle="collapse" data-target="#collapse-seg" aria-expanded="true"
+          aria-controls="collapse-seg" id="heading-example">
+          Word segmintation
+        </a>
       </div>
-      <div class="card-body overflow-auto scrollable">
-        <p class="card-text seg" id="seg"></p>
+      <div id="collapse-seg" class="collapse show" aria-labelledby="heading-example">
+        <div class="card-body overflow-auto scrollable">
+          <p class="card-text seg" id="seg"></p>
+        </div>
       </div>
     </div>
   </div>

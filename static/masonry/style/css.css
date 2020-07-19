@@ -50,8 +50,16 @@
 
 .grid-layout .main .output .card {
   margin-bottom: 1rem;
-  min-height: 307px;
   max-height: 307px;
+}
+
+.grid-layout .main .output .card .card-header a {
+  text-decoration: none !important;
+  display: block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .grid-layout .main .output .switchable {
@@ -63,13 +71,6 @@
   z-index: 99;
   margin: 1px;
   right: 0;
-}
-
-.grid-layout .main .output .switchable .card {
-  height: 100%;
-  margin-bottom: 1rem;
-  min-height: 307px;
-  max-height: 307px;
 }
 
 .grid-layout .main .mapcontainer {
@@ -200,10 +201,16 @@
     margin-bottom: 0;
     max-height: 317px;
   }
+  .grid-layout .main .output .card .card-header a {
+    pointer-events: none;
+  }
   .grid-layout .main .output .switchable .card {
     margin-bottom: 0;
     max-height: 317px;
     height: 100%;
+  }
+  .grid-layout .main .output .switchable .card .card-header a {
+    pointer-events: none;
   }
   .grid-layout .main .mapcontainer,
   .grid-layout .main .diacList {
