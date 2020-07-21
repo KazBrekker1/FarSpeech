@@ -132,7 +132,7 @@
 					updateMapAndList(JSON.parse(data));
 				},
 			});
-			// Receting the blobs accumilated in the BlobBuilder
+			// Resetting the blobs accumilated in the BlobBuilder
 			myBlobBuilder.parts = [];
 		};
 

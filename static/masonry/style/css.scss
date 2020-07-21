@@ -153,7 +153,8 @@
 				grid-template-columns: 50% 50%;
 				.card {
 					margin-bottom: 0;
-					max-height: 317px;
+					max-height: 314px;
+					min-height: 314px;
 					.card-header {
 						a {
 							pointer-events: none;
@@ -161,10 +162,9 @@
 					}
 				}
 				.switchable {
+					max-height: 314px;
 					.card {
 						margin-bottom: 0;
-						max-height: 317px;
-						height: 100%;
 						.card-header {
 							a {
 								pointer-events: none;
@@ -173,10 +173,8 @@
 					}
 				}
 			}
-			.mapcontainer,
-			.diacList {
-				width: 100%;
-				height: 100%;
+			.mapcontainer {
+				max-height: 644px;
 			}
 			.diacList {
 				width: 50%;
