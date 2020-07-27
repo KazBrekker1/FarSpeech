@@ -100,7 +100,7 @@
   opacity: 0.3;
 }
 
-.grid-layout .main .mapcontainer .map .mapael .mapTooltip {
+.grid-layout .main .mapcontainer .map .mapTooltip {
   position: absolute;
   background-color: #fff;
   opacity: 0.9;
